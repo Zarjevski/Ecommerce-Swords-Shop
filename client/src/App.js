@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Error from "./components/Error";
 import Footer from "./components/Footer";
+import Shop from "./components/shop/Shop";
 // end of imports
 
 const App = () => {
@@ -13,6 +14,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />
