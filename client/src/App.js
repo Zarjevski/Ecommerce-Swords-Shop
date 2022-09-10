@@ -4,8 +4,8 @@ import React from "react";
 import Home from "./components/Home";
 import Navbar from "./components/Navbar";
 import Error from "./components/Error";
-import Footer from "./components/Footer";
 import Shop from "./components/shop/Shop";
+import Footer from "./components/Footer";
 // end of imports
 
 const App = () => {
