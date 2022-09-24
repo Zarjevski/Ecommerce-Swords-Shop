@@ -10,7 +10,7 @@ const ShopProvider = ({ children }) => {
 
   const getProducts = async (query) => {
     try {
-      const response = await fetch(`/products?${query}`);
+      const response = await fetch(`/products`);
       const result = await response.json();
       setProducts(result.products);
       console.log(result);

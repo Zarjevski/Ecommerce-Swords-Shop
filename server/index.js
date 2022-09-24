@@ -1,12 +1,14 @@
 const express = require("express");
 const app = express();
 require("dotenv").config();
-const port = process.env.port || 5000;
-const products = require("./routes/products");
+const port = 5000 || process.env.PORT;
+const productRoutes = require("./routes/products.js");
+const registerRoutes = require('./routes/register.js')
 const connectDB = require("./db/connect");
 
 app.use(express.json());
-app.use("/products", products);
+app.use("/products", productRoutes);
+app.use('/register', registerRoutes)
 app.use(express.static("../client/public"));
 
 const startServer = async () => {
@@ -19,5 +21,6 @@ const startServer = async () => {
     console.log(error);
   }
 };
+
 
 startServer();
