@@ -1,14 +1,14 @@
 const registerService = require('../services/register.js')
 
-const register = async (req,res) => {
+const newRegister = async (req,res) => {
  try {
-     const register = req.body
-     const signUp = await registerService.register(register)
+     const {name, email, password} = req.body
+     const signUp = await registerService.register(name, email, password)
      return res.status(200).send(signUp)
  } catch (error) {
-     console.log(error);
+    res.send(error.message)
  }
 
 }
 
-module.exports = {register}
+module.exports = {newRegister}
