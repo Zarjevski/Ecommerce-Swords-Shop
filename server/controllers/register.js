@@ -1,4 +1,4 @@
-const registerService = require('../services/register.js')
+import registerService from '../services/register.js'
 
 const newRegister = async (req,res) => {
  try {
@@ -11,4 +11,4 @@ const newRegister = async (req,res) => {
 
 }
 
-module.exports = {newRegister}
+export default {newRegister}

@@ -1,6 +1,6 @@
-const bcrypt = require('bcryptjs')
+import  bcrypt from 'bcryptjs'
 
-const User = require('../models/user.js')
+import User from '../models/user.js'
 
 const register = async(name, email, password) => {
     const existing = await User.findOne({email})
@@ -19,4 +19,4 @@ const register = async(name, email, password) => {
     return createRegister
 }
 
-module.exports = {register}
+export default {register}

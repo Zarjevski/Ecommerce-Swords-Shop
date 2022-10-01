@@ -2,9 +2,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
 import Home from "./components/Home";
+import Account from "./components/user/Account";
 import Navbar from "./components/Navbar";
 import Error from "./components/Error";
-import Shop from "./components/shop/Shop";
 import Footer from "./components/Footer";
 // end of imports
 
@@ -14,7 +14,8 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop />} />
+        <Route path="/shop" element={<h1>hello world</h1>} />
+        <Route path="/account" element={<Account/>}/>
         <Route path="*" element={<Error />} />
       </Routes>
       <Footer />

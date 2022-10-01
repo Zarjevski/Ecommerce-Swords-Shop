@@ -1,4 +1,4 @@
-const Product = require("../models/product.js");
+import  Product from "../models/product.js";
 
 const getProducts  = async () => {
     // const { search } = req.query;
@@ -14,4 +14,4 @@ const getProducts  = async () => {
     return products
 }
 
-module.exports = {getProducts}
+export default  {getProducts}
