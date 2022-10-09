@@ -1,0 +1,22 @@
+version: "3.4"
+services:
+  app:
+    container_name: ninja-shop
+    build: .
+    working_dir: /var/www/ninja
+    ports:
+      - "80:5000"
+    links:
+      - mongo
+    volumes:
+      - .:/var/www/ninja
+      - /var/www/ninja/node_modules
+  mongo:
+    container_name: ninja-mongo
+    image: mongo:5
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo:/data/ninja/db
+volumes:
+  mongo: {}

@@ -1,17 +1,22 @@
 import React from 'react'
 import { useState } from 'react'
-import {Link} from "react-router-dom"
+import {Link } from "react-router-dom"
 import axios from 'axios'
 const Login = () => {
     const [password,setPassword] = useState('')
     const [email, setEmail] = useState('')
-    const headers = {
-        "Access-Control-Allow-Origin": "http://localhost:5000/"
-    }
     const handleSubmit = async(e) => {
         e.preventDefault()
-        const response = await axios.post('http://localhost:5000/login', {email, password,}, {headers: headers})
-        console.log(response);
+        try {
+            const response = await axios.post('http://localhost/login', {email, password,})
+            console.log(response);
+            setEmail("")
+            setPassword("")    
+        } catch (error) {
+         console.log(error);
+         setEmail('')
+         setPassword('')   
+        }
     }
   return (
     <div className='login center'>

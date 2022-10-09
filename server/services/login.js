@@ -1,5 +1,5 @@
 import bcrypt from 'bcryptjs'
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
 import User from '../models/user.js'
 
 const logIn = async(email, password) => {
@@ -9,11 +9,12 @@ const logIn = async(email, password) => {
         if (!checkPsw) {
             throw 'password incorrect'
         }
+        const userId = user._id;
         const secretToken = process.env.TOKEN_SECRET
-        const token = jwt.sign({email, password},secretToken)
-        console.log(token);
-    } else {
-        throw 'email or password incorrect'
+        const accessToken = jwt.sign({email, userId}, secretToken, {expiresIn:'1d'})
+        return accessToken
+    } else if (!user || user === null) {
+        throw 'user dosent exist'
     }
 }
 

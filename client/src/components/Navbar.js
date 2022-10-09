@@ -8,7 +8,7 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="logo">
-        <h1>Viking Shop</h1>
+        <h1>Ninja Shop</h1>
       </div>
       <ul>
         <li>
@@ -17,13 +17,13 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/shop" className="nav-link">
-            Products
+          <Link to="/weapons" className="nav-link">
+            Weapons
           </Link>
         </li>
         <li>
-          <Link to="/about" className="nav-link">
-            About
+          <Link to="/accessories" className="nav-link">
+            Accessories
           </Link>
         </li>
         <li>
