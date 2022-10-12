@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer>
-      <h3 style={{ textAlign: "center" }}>viking shop</h3>
+      <h3 style={{ textAlign: "center" }}>Shadow Shop</h3>
     </footer>
   );
 };

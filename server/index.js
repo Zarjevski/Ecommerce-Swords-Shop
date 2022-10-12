@@ -1,26 +1,29 @@
+// imports
 import express from 'express';
 import  productRoutes from "./routes/products.js";
 import registerRoutes from './routes/register.js';
 import loginRoutes from './routes/login.js'
 import adminRoutes from './routes/admin.js';
+import userRoutes from './routes/user.js'
 import connectDB from "./config/database.js";
 import cors from 'cors'
 import dotenv from 'dotenv'
-import * as cookieParser from "cookie-parser";
 
+// varibales
 dotenv.config();
 const app = express();
 const port = 5000 || process.env.PORT;
+
 // middleware
 app.use(express.json());
 app.use(cors())
 app.use(express.static("../client/build"));
-app.use(cookieParser())
 
 // routes
 app.use('/login', loginRoutes)
 app.use("/products", productRoutes);
 app.use('/register', registerRoutes)
+app.use('/account', userRoutes)
 app.use('/admin', adminRoutes)
 
 // start

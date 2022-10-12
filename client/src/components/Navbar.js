@@ -17,13 +17,8 @@ const Navbar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/weapons" className="nav-link">
-            Weapons
-          </Link>
-        </li>
-        <li>
-          <Link to="/accessories" className="nav-link">
-            Accessories
+          <Link to="/shop" className="nav-link">
+            Shop
           </Link>
         </li>
         <li>

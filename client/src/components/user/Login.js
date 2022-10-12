@@ -20,7 +20,7 @@ const Login = () => {
     }
   return (
     <div className='login center'>
-        <h1>Wellcom</h1>
+        <h1>welcome</h1>
         <form className='login-form center' onSubmit={handleSubmit}>
             <div className='input-container'>
                 <input type="email" name="email" value={email} placeholder='email' onChange={(e)=> setEmail(e.target.value)}/>

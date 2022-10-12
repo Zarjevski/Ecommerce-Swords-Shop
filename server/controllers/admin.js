@@ -1,5 +1,5 @@
 const dashboard = (req, res) =>{
-    console.log('hello world');
+    res.send('admin route')
 }
 
 export default {dashboard}

@@ -5,7 +5,6 @@ const getProducts = async (req,res) => {
   try {
     const products = await productService.getProducts(search)
     return res.send(products)
-
   } catch (error) {
     console.log(error);
   }

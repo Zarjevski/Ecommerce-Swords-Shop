@@ -8,7 +8,7 @@ import Cart from "./components/cart/Cart";
 import Error from "./components/Error";
 import Footer from "./components/Footer";
 import Register from "./components/user/Register";
-import Weapons from "./components/shop/Weapons";
+import Shop from './components/shop/Shop'
 // end of imports
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/weapons" element={<Weapons/>} />
+        <Route path="/Shop" element={<Shop/>} />
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/account" element={<Account/>}/>
         <Route path="/register" element={<Register/>}/>
