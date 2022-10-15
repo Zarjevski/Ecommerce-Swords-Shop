@@ -137,14 +137,16 @@ section {
 .home {
   height: 100%;
   width: 100%;
-  
+  scroll-snap-type: y mandatory;  
 }
 
 .hero {
   height: 100vh;
   width: 100%;
   display: flex;
-  scroll-snap-type: y mandatory;
+  background-image: url(./imgs/hero.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .image {
@@ -255,15 +257,16 @@ section {
   width: 80%;
   padding: 2rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
   justify-items: center;
 }
 
 .product {
-  height: 50%;
-  width: 80%;
-  background-color: #022434;
+  padding: 10px;
+  height: 100%;
+  width: 100%;
+  background-color: var(--clr-secondary);
   box-shadow: var(--box-shadow);
   border-radius: 10px;
   color: white;
@@ -273,6 +276,12 @@ section {
 .product:hover {
   transform: scale(1.04);
   cursor: pointer;
+}
+
+.img-container {
+  width: 100%;
+  height: 70%;
+  background-color: aliceblue;
 }
 
 /* ====== */
@@ -287,6 +296,7 @@ section {
   border: 0.5px solid var(--clr-secondary);
   border-radius: 1rem;
   box-shadow: var(--box-shadow);
+  overflow: hidden;
 }
 
 .login h1 {

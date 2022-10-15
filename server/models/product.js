@@ -1,10 +1,10 @@
-import  mongoose from "mongoose";
+import mongoose from "mongoose";
 
 const ProductSchema = new mongoose.Schema({
   title: {
     type: String,
   },
-  dec: {
+  desc: {
     type: String,
   },
   rating: {
@@ -15,4 +15,4 @@ const ProductSchema = new mongoose.Schema({
   },
 });
 
-export default  mongoose.model("Product", ProductSchema);
+export default mongoose.model("Product", ProductSchema);
