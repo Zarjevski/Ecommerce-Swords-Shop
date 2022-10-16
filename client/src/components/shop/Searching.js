@@ -15,6 +15,7 @@ const Searching = () => {
   // test
   useEffect(()=>{
       getData(searchParams)
+      // eslint-disable-next-line
   },[searchParams])
   // jsx
   return (

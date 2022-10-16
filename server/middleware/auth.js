@@ -7,8 +7,9 @@ const auth = (req, res , next) => {
     }
     const token = authHeaders.split(' ')[1]
     const decoded = jwt.verify(token, process.env.TOKEN_SECRET)
-    const {email,userId} = decoded
-    req.user = {email,userId}
+    const {email,userId,roles} = decoded
+    
+    req.user = {email,userId,roles}
     next()
 }
 

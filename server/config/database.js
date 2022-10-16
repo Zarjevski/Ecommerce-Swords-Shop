@@ -1,12 +1,19 @@
-import  mongoose from "mongoose";
+import mongoose from "mongoose";
 
-const connectDB = async(url, config) => {
-  return mongoose.connect(url, config, (error)=>{
-    if (error) {
-      console.log(error, 'error connecting to mongoDB');
+const connectDB = async (url) => {
+  return mongoose.connect(
+    url,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    },
+    (error) => {
+      if (error) {
+        console.log(error, "error connecting to mongoDB");
+      }
+      console.log("mongoDB is connected");
     }
-    console.log('mongoDB is connected');
-  });
+  );
 };
 
-export default connectDB ;
+export default connectDB;

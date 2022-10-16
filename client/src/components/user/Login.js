@@ -7,7 +7,7 @@ import AuthContext from "../../context/AuthContex";
 const Login = () => {
   // constants
   const emailRef = useRef();
-  const {auth,setAuth} = useContext(AuthContext)
+  const {setAuth} = useContext(AuthContext)
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   //   effects
@@ -18,10 +18,11 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("/login", {
+      const response = await axios.post("/auth/login", {
         email,
         password,
       });
+      console.log(response);
       setEmail("");
       setPassword("");
       setAuth({accessToken: response.data.accessToken})
