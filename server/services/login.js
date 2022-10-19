@@ -21,7 +21,7 @@ const logIn = async (email, password) => {
     );
     // refresh token
     const refreshToken = jwt.sign(
-      { email, userId },
+      { email, userId, userRole },
       process.env.REFRESH_TOKEN_SECRET,
       { expiresIn: "1d" }
     );
@@ -31,4 +31,4 @@ const logIn = async (email, password) => {
   }
 };
 
-export default { logIn };
+export default logIn ;
