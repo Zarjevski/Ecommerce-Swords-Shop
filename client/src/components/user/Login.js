@@ -1,15 +1,16 @@
-import React, { useEffect, useRef,useState,useContext } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setToken, setLoggedIn } from "../../features/auth/authSlice";
 import axios from "../../api/axios";
-import AuthContext from "../../context/AuthContex";
-
 
 const Login = () => {
   // constants
+  const dispatch = useDispatch();
   const emailRef = useRef();
-  const {setAuth} = useContext(AuthContext)
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  console.log();
   //   effects
   useEffect(() => {
     emailRef.current.focus();
@@ -22,10 +23,8 @@ const Login = () => {
         email,
         password,
       });
-      console.log(response);
-      setEmail("");
-      setPassword("");
-      setAuth({accessToken: response.data.accessToken})
+      dispatch(setToken(response.data.accessToken));
+      dispatch(setLoggedIn());
     } catch (error) {
       console.log(error);
       setEmail("");

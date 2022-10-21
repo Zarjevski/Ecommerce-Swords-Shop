@@ -9,7 +9,7 @@ const Error = () => {
   return (
     <section className="error-section">
       <div>
-        <h1>the page not found</h1>
+        <h1>page not found</h1>
         <button onClick={() => backToHome()}>back to home</button>
       </div>
     </section>
