@@ -1,0 +1,5 @@
+{
+    "short_name":"ninja",
+    "name": "ninja shop",
+    "start_url": "./index.html"
+}

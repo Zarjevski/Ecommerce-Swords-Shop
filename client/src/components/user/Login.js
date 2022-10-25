@@ -22,7 +22,7 @@ const Login = () => {
       const response = await axios.post("/auth/login", {
         email,
         password,
-      });
+      }, { withCredentials: true });
       dispatch(setToken(response.data.accessToken));
       dispatch(setLoggedIn());
     } catch (error) {

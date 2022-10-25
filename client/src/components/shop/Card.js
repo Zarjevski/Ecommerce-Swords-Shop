@@ -1,14 +1,16 @@
 import React from "react";
 
 const Card = (product) => {
-  const { _id, title, desc } = product;
+  const { _id, title } = product;
   return (
-    <article className="product">
+    <article className="product center">
       <div className="img-container">
-      <img src="" alt={title}/>
+        <img src="" alt={title} />
       </div>
-      <h1>{title}</h1>
-      <p>{desc}</p>
+     <div className="product-info center">
+     <h1>{title}</h1>
+      <button onClick={() => console.log(_id)}>Add to cart</button>
+     </div>
     </article>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import Login from "./Login";
+import Profile from "./Profile";
 import { useSelector } from "react-redux";
 
 const Account = () => {
@@ -12,9 +13,7 @@ const Account = () => {
     );
   }
   return (
-    <section className="center">
-      <h1>you are logged in</h1>
-    </section>
+    <Profile/>
   )
 };
 

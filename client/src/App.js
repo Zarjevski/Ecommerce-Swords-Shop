@@ -1,6 +1,5 @@
 // imports
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import React from "react";
 import Home from "./components/Home";
 import Account from "./components/user/Account";
 import Navbar from "./components/Navbar";
@@ -9,10 +8,12 @@ import Error from "./components/Error";
 import Footer from "./components/Footer";
 import Register from "./components/user/Register";
 import Shop from './components/shop/Shop'
+import { Box } from "@mui/system";
 // end of imports
 
 const App = () => {
   return (
+    <Box>
     <Router>
       <Navbar />
       <Routes>
@@ -25,6 +26,7 @@ const App = () => {
       </Routes>
       <Footer />
     </Router>
+    </Box>
   );
 };
 
