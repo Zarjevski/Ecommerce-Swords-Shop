@@ -16,7 +16,7 @@ const logIn = async (email, password) => {
       { email, userId, userRole },
       process.env.ACCESS_TOKEN_SECRET,
       {
-        expiresIn: "5m",
+        expiresIn: "30m",
       }
     );
     // refresh token

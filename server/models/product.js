@@ -13,6 +13,9 @@ const ProductSchema = new mongoose.Schema({
   price: {
     type: Number,
   },
+  category: {
+    type: String
+  }
 });
 
 export default mongoose.model("Product", ProductSchema);

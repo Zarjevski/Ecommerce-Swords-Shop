@@ -11,16 +11,20 @@ const getProducts = async (search) => {
 
 const createProduct = async (body) => {
   try {
-    const { title, desc, price } = body;
+    console.log(body)
+    const { title, desc, price, category } = body;
     const existing = await Product.findOne({title});
     if (existing) {
       throw new Error("product already exist");
     }
-    const newProduct = await Product.create({ title, desc, price });
+    const newProduct = await Product.create({ title, desc, price, category });
+    console.log(newProduct)
     return newProduct;
   } catch (error) {
     console.log(error);
   }
 };
+
+// delete product function is at the controllers
 
 export default { getProducts, createProduct };

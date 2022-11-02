@@ -1,3 +1,4 @@
+import Product from "../models/product.js";
 import productService from "../services/products.js";
 
 const getProducts = async (req, res) => {
@@ -11,7 +12,6 @@ const getProducts = async (req, res) => {
 };
 
 const createProduct = async (req, res) => {
-  const { title, desc, price } = req.body;
   try {
     const created = await productService.createProduct(req.body);
     res
@@ -22,4 +22,15 @@ const createProduct = async (req, res) => {
   }
 };
 
-export default { getProducts, createProduct };
+const deleteProduct = async (req, res) => {
+  const { _id } = req.body;
+  try {
+    const deleteOne = await Product.deleteOne({ _id });
+    console.log(deleteOne);
+    res.status(200).json({ msg: `product wih id:${_id} was deleted` });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export default { getProducts, createProduct, deleteProduct };

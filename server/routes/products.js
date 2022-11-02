@@ -5,5 +5,6 @@ import checkRole from "../middleware/checkRole.js"
 
 router.get('/',productController.getProducts);
 router.post('/',checkRole ,productController.createProduct)
+router.delete('/',checkRole, productController.deleteProduct)
 
 export default router ;
