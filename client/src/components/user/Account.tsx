@@ -6,8 +6,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 
 const Account = () => {
-  const { loggedIn } = useSelector((state: RootState) => state.auth);
-  const { role } = useSelector((state: RootState) => state.user);
+  const { loggedIn, role } = useSelector((state: RootState) => state.auth);
   if (role.includes("Admin")) {
     return <Dashboard />;
     console.log("user is admin");

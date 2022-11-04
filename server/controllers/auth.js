@@ -15,14 +15,14 @@ const newRegister = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const { accessToken, refreshToken } = await loginService(email, password);
+    const { accessToken, refreshToken, userRole } = await loginService(email, password);
     res.cookie("jwt", refreshToken, {
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000,
       sameSite: "none",
       secure:true
     });
-    res.status(200).json({ accessToken });
+    res.status(200).json({ accessToken, userRole });
   } catch (error) {
     res.status(401).json({ error });
     console.log(error);

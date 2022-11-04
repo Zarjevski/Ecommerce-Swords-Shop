@@ -1,12 +1,12 @@
 import React from "react";
 
-const Card = () => {
+const Card = (product:any) => {  
   return (
     <article className="card bg-black rounded-md">
       <div className="img-container w-full h-3/4 bg-fuchsia-200"></div>
       <div className="info flex justify-between p-4">
-        <h1 className="text-white">title</h1>
-        <h1 className="text-white">price</h1>
+        <h1 className="text-white">{product.title }</h1>
+        <h1 className="text-white">{product.price}</h1>
       </div>
       <div className="button-container flex items-center justify-around">
         <button className="bg-white flex p-1 rounded-sm">

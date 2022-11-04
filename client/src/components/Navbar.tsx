@@ -1,16 +1,43 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { UserCircleIcon, ShoppingCartIcon, Bars3Icon } from "@heroicons/react/24/outline";
+import {
+  UserCircleIcon,
+  ShoppingCartIcon,
+  Bars3Icon,
+} from "@heroicons/react/24/outline";
+import { useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../store";
+import { useDispatch } from "react-redux";
+import { openSidebar } from "../features/shop/shopSlice";
 
 const Navbar = () => {
-  const active:object = { color: "red" };
+  const active: object = { color: "red" };
+  const { sidebarOpen } = useSelector((store: RootState) => store.shop);
+  const dispatch: AppDispatch = useDispatch();
   return (
-    <nav className="h-11 w-screen bg-black text-white flex justify-around items-center shadow-lg">
-      <button className="xl:hidden lg:hidden md:hidden xs:block sm:block"><Bars3Icon className="w-6 h-6 text-white"/></button>
+    <nav
+      className={
+        sidebarOpen
+          ? "h-auto w-screen bg-black text-white flex justify-around items-center shadow-lg"
+          : "h-11 w-screen bg-black text-white flex justify-around items-center shadow-lg"
+      }
+    >
+      <button
+        className="xl:hidden lg:hidden md:hidden xs:block sm:block"
+        onClick={() => dispatch(openSidebar())}
+      >
+        <Bars3Icon className="w-6 h-6 text-white" />
+      </button>
       <div className="logo">
         <h1>SHADOW SHOP</h1>
       </div>
-      <ul className="xs:hidden sm:hidden xl:flex lg:flex">
+      <ul
+        className={
+          sidebarOpen
+            ? "xs:flex xs:flex-col sm:flex-col sm:flex xl:flex lg:flex"
+            : "xs:hidden sm:hidden xl:flex lg:flex"
+        }
+      >
         <li>
           <NavLink
             to="/"

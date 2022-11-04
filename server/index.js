@@ -1,5 +1,6 @@
 // imports
 import express from "express";
+import userRoutes from './routes/userRoutes.js'
 import productRoutes from "./routes/products.js";
 import authRoutes from "./routes/authRoutes.js";
 import connectDB from "./config/database.js";
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({origin: 'http://localhost:3000',credentials: true}));
 // routes
+app.use('/user', userRoutes)
 app.use("/auth", authRoutes);
 app.use("/products", productRoutes);
 // start

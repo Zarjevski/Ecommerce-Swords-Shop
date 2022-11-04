@@ -3,6 +3,9 @@ import jwt from "jsonwebtoken";
 import User from "../models/user.js";
 
 const logIn = async (email, password) => {
+  if (!email && !password) {
+    throw "please fill the fields";
+  }
   const user = await User.findOne({ email });
   if (user) {
     const checkPsw = await bcrypt.compare(password, user.password);
@@ -25,10 +28,10 @@ const logIn = async (email, password) => {
       process.env.REFRESH_TOKEN_SECRET,
       { expiresIn: "1d" }
     );
-    return { accessToken, refreshToken };
+    return { accessToken, refreshToken, userRole };
   } else if (!user || user === null) {
     throw "user dosent exist";
   }
 };
 
-export default logIn ;
+export default logIn;

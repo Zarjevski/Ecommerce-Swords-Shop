@@ -6,10 +6,9 @@ const auth = (req, res , next) => {
         throw new Error('not authorized')
     }
     const token = authHeaders.split(' ')[1]
-    const decoded = jwt.verify(token, process.env.TOKEN_SECRET)
-    const {email,userId,roles} = decoded
-    
-    req.user = {email,userId,roles}
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET)
+    const {email,userId,userRole} = decoded
+    req.user = {email,userId,userRole}
     next()
 }
 
