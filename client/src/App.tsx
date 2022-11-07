@@ -8,12 +8,16 @@ import Account from "./components/user/Account";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "./store";
 import { getProducts } from "./features/shop/shopSlice";
+import { useSelector } from "react-redux";
+import { RootState } from "./store";
 
 const App = () => {
   const dispatch: AppDispatch = useDispatch();
+
   useEffect(() => {
-    dispatch(getProducts())
+    dispatch(getProducts());
   }, []);
+  
   return (
     <BrowserRouter>
       <Navbar />

@@ -19,14 +19,15 @@ const logIn = async (email, password) => {
       { email, userId, userRole },
       process.env.ACCESS_TOKEN_SECRET,
       {
-        expiresIn: "30m",
+        expiresIn: "10s",
       }
     );
+
     // refresh token
     const refreshToken = jwt.sign(
       { email, userId, userRole },
       process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: "1d" }
+      { expiresIn: "20s" }
     );
     return { accessToken, refreshToken, userRole };
   } else if (!user || user === null) {
