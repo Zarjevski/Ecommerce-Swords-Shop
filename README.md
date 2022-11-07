@@ -3,10 +3,10 @@
 ## Technologies and Features
 
 ### Front-End:
-* Axios
 * React.js 18
 * React Router v6
-* React icons
+* Redux Toolkit
+* Tailwind css
 
 ### Back-End:
 * Node.js
