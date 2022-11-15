@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(29, 29, 29);
+    color: aliceblue;
+}
+
 nav li {
     padding: 12px;
 }
+
+

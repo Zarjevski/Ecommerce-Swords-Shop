@@ -1,14 +1,15 @@
 import { createSlice, Reducer } from "@reduxjs/toolkit";
+import { RootState } from "../../store";
 import axios from "axios";
 
 const initialState: {
   token: string;
-  user: string;
+  userName: string;
   loggedIn: boolean;
   role: Array<string>;
 } = {
   token: "",
-  user: "",
+  userName: "Guest",
   loggedIn: false,
   role: ["Guest"],
 };
@@ -17,22 +18,20 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setToken: (state, action) => {
-      state.token = action.payload;
+    setAuth: (state, action) => {
+      const {accessToken, userRole, username} = action.payload
+      state.token = accessToken;
+      state.role = userRole;
+      state.userName = username
+      state.loggedIn = true
     },
-    setRole: (state, actions) => {
-      state.role = actions.payload;
-    },
-    setLoggedIn: (state) => {
-      state.loggedIn = true;
-    },
-    setLoggedOut: (state) => {
-      (state.loggedIn = false),
-        () => axios.post("http://localhost:80/auth/logout"),
-        (state.token = "");
+    logOut: (state) => {
+        axios.post("http://localhost:80/auth/logout"),
+        state = initialState;
     },
   },
 });
 
-export const { setToken, setLoggedIn, setRole } = authSlice.actions;
+export const { setAuth, logOut } = authSlice.actions;
+export const useToken = (state:RootState) => state.auth.token
 export default authSlice.reducer as Reducer;

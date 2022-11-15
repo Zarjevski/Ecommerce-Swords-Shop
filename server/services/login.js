@@ -13,10 +13,11 @@ const logIn = async (email, password) => {
       throw "password incorrect";
     }
     // access token
+    const username = user.firstName + " " + user.lastName;
     const userId = user._id;
     const userRole = user.roles;
     const accessToken = jwt.sign(
-      { email, userId, userRole },
+      { email, userId, username, userRole },
       process.env.ACCESS_TOKEN_SECRET,
       {
         expiresIn: "10s",
@@ -25,11 +26,11 @@ const logIn = async (email, password) => {
 
     // refresh token
     const refreshToken = jwt.sign(
-      { email, userId, userRole },
+      { email, userId, username, userRole },
       process.env.REFRESH_TOKEN_SECRET,
       { expiresIn: "20s" }
     );
-    return { accessToken, refreshToken, userRole };
+    return { accessToken, refreshToken, userRole , username };
   } else if (!user || user === null) {
     throw "user dosent exist";
   }

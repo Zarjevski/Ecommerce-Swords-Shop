@@ -4,7 +4,7 @@ import axios from "axios";
 // after i done set it up make sure you return the right type to products
 
 const initialState: {
-  products: any;
+  products: Array<object>;
   queryObject: object;
   sidebarOpen: boolean;
   isLoading: boolean;

@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import { useDispatch } from "react-redux";
 import { openSidebar } from "../features/shop/shopSlice";
+// import UserIcon from "./user/UserIcon";
 
 const Navbar = () => {
   const active: object = { color: "red" };
@@ -67,10 +68,11 @@ const Navbar = () => {
       <ul className="flex">
         <li>
           <NavLink
-            to={"/account"}
+            to={"/login"}
             style={({ isActive }) => (isActive ? active : undefined)}
           >
             <UserCircleIcon className="h-6 w-6" />
+            {/* <UserIcon/> */}
           </NavLink>
         </li>
         <li>
@@ -78,7 +80,7 @@ const Navbar = () => {
             to={"/cart"}
             style={({ isActive }) => (isActive ? active : undefined)}
           >
-            <ShoppingCartIcon className="h-6 w-6" />
+          <ShoppingCartIcon className="h-6 w-6" />
           </NavLink>
         </li>
       </ul>

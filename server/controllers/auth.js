@@ -4,8 +4,13 @@ import refreshService from "../services/refresh.js";
 
 const newRegister = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    const signUp = await registerService.register(name, email, password);
+    const { firstName, lastName, email, password } = req.body;
+    const signUp = await registerService.register(
+      firstName,
+      lastName,
+      email,
+      password
+    );
     return res.status(200).send(signUp);
   } catch (error) {
     res.send(error.message);
@@ -15,14 +20,15 @@ const newRegister = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
-    const { accessToken, refreshToken, userRole } = await loginService(email, password);
+    const { accessToken, refreshToken, userRole, username } =
+      await loginService(email, password);
     res.cookie("jwt", refreshToken, {
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000,
       sameSite: "none",
-      secure:true
+      secure: true,
     });
-    res.status(200).json({ accessToken, userRole });
+    res.status(200).json({ accessToken, userRole, username });
   } catch (error) {
     res.status(401).json({ error });
     console.log(error);
@@ -35,7 +41,7 @@ const refresh = async (req, res) => {
     const accessToken = await refreshService(cookies);
     res.status(200).json({ accessToken });
   } catch (error) {
-    res.status(403).json({msg: "Unauthorized"})
+    res.status(403).json({ msg: "Unauthorized" });
     console.log(error);
   }
 };

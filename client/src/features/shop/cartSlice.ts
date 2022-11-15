@@ -13,7 +13,12 @@ let initialState: {
 const cartSlice = createSlice({
   name: "cart",
   initialState,
-  reducers: {},
+  reducers: {
+    addItem: (state, action) => {
+      state.cartItems.push(action.payload);
+    },
+  },
 });
 
-export default cartSlice.reducer as Reducer
+export const { addItem } = cartSlice.actions;
+export default cartSlice.reducer as Reducer;
