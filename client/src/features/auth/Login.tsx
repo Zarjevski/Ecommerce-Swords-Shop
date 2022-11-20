@@ -1,36 +1,26 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, FormEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "../../store";
-import { setAuth } from "../../features/auth/authSlice";
-import { useNavigate, useLocation, Navigate } from "react-router-dom";
-import { RootState } from "../../store";
-import axios from "axios";
-import { useLoginMutation } from "../../features/auth/authApiSlice";
+import { setAuth } from "./authSlice";
+import { Navigate } from "react-router-dom";
+import { RootState, AppDispatch } from "../../store";
+import axios from "../../api/axios";
 
 const Login = () => {
-  const userRef = useRef;
+  const { loggedIn } = useSelector((store: RootState) => store.auth);
   const [errorMsg, setErrorMsg] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const dispatch = useDispatch();
-  const { loggedIn } = useSelector((store) => store.auth);
-  const login = useLoginMutation();
-  const navigate = useNavigate();
-
-  console.log(useLoginMutation);
+  const dispatch: AppDispatch = useDispatch();
   //  handle submiting the form
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      const response = await login({email,password}).unwrap()
-      console.log(response);
-      dispatch(setAuth({ ...response}));
-      navigate("/account");
-    } catch (err) {
-      console.log(err);
-      // let error = await err.response.data.error;
-      // setErrorMsg(error);
-      // setTimeout(() => setErrorMsg(""), 2000);
+      const response = await axios.post("/auth/login", { email, password });
+      dispatch(setAuth({ ...response.data }));
+    } catch (err :any) {
+      let error = await err.response.data.error;
+      setErrorMsg(error);
+      setTimeout(() => setErrorMsg(""), 2000);
     }
   };
 
@@ -45,10 +35,7 @@ const Login = () => {
           onSubmit={handleSubmit}
           className="flex-col flex items-center justify-center w-full "
         >
-          <label htmlFor="username">
-            {" "}
-            username
-          </label>
+          <label htmlFor="username"> username</label>
           <input
             type="text"
             id="username"

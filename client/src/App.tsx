@@ -6,14 +6,14 @@ import Home from "./components/Home";
 import Shop from "./components/shop/Shop";
 import About from "./components/About";
 import Cart from "./components/shop/Cart";
-import Login from "./components/auth/Login";
+import Login from "./features/auth/Login";
 import RequiredAuth from "./components/RequiredAuth";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "./store";
 import { getProducts } from "./features/shop/shopSlice";
 import Dashboard from "./components/admin/Dashboard";
-import Profile from "./components/user/Profile";
+import Profile from "./components/Profile";
 
 const App = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -34,7 +34,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         {/* private routes */}
         <Route element={<PresistLogin />}>
-          <Route element={<RequiredAuth allowedRole={["Customer"]} />}>
+          <Route element={<RequiredAuth allowedRole={["Customer","Admin"]} />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
           <Route element={<RequiredAuth allowedRole={["Admin"]} />}>

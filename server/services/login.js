@@ -20,7 +20,7 @@ const logIn = async (email, password) => {
       { email, userId, username, userRole },
       process.env.ACCESS_TOKEN_SECRET,
       {
-        expiresIn: "10s",
+        expiresIn: "30m",
       }
     );
 
@@ -28,7 +28,7 @@ const logIn = async (email, password) => {
     const refreshToken = jwt.sign(
       { email, userId, username, userRole },
       process.env.REFRESH_TOKEN_SECRET,
-      { expiresIn: "20s" }
+      { expiresIn: "1d" }
     );
     return { accessToken, refreshToken, userRole , username };
   } else if (!user || user === null) {

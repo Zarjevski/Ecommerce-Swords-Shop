@@ -5,7 +5,7 @@ import Filters from "./Filters";
 
 const Shop = () => {
   return (
-    <section className="w-full h-screen flex sm:justify-center xs:justify-center">
+    <section className="w-full h-screen flex sm:justify-center xs:justify-center xs:min-h-fit">
       <Filters />
       <Grid />
     </section>

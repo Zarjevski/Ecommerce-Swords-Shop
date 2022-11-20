@@ -1,6 +1,6 @@
 import { createSlice, Reducer } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
-import axios from "axios";
+import axios from "../../api/axios";
 
 const initialState: {
   token: string;
@@ -26,8 +26,11 @@ const authSlice = createSlice({
       state.loggedIn = true
     },
     logOut: (state) => {
-        axios.post("http://localhost:80/auth/logout"),
-        state = initialState;
+        axios.post('/auth/logout')
+        state.loggedIn = initialState.loggedIn;
+        state.role = initialState.role;
+        state.token = initialState.token;
+        state.userName = initialState.userName
     },
   },
 });

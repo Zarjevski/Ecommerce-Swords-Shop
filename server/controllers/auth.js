@@ -25,7 +25,7 @@ const login = async (req, res) => {
     res.cookie("jwt", refreshToken, {
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000,
-      sameSite: "none",
+      sameSite: "None",
       secure: true,
     });
     res.status(200).json({ accessToken, userRole, username });
@@ -38,11 +38,10 @@ const login = async (req, res) => {
 const refresh = async (req, res) => {
   try {
     const cookies = req.cookies;
-    const accessToken = await refreshService(cookies);
-    res.status(200).json({ accessToken });
+    const { userRole, username, accessToken } = await refreshService(cookies);
+    res.status(200).json({ userRole, username, accessToken });
   } catch (error) {
     res.status(403).json({ msg: "Unauthorized" });
-    console.log(error);
   }
 };
 
@@ -53,7 +52,7 @@ const logout = (req, res) => {
   }
   res.clearCookie("jwt", {
     httpOnly: true,
-    sameSite: "None",
+    // sameSite: "None",
   });
   res.json({ msg: "cookie cleared" });
 };

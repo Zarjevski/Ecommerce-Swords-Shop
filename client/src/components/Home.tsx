@@ -10,22 +10,22 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <section className="h-screen w-screen">
-      <div className="h-screen flex w-full">
-        <div className="info w-1/2 h-full flex flex-col items-center justify-center ">
+      <div className="h-screen flex w-full sm:flex sm:justify-center xs:flex xs:justify-center">
+        <div className="info w-1/2 h-full flex flex-col items-center justify-center">
           <h1 className="text-4xl">REACT TYPESCRIPT TAILWIND </h1>
           <p>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
             Cupiditate, eaque!
           </p>
           <button
-            className="rounded-full bg-slate-400 w-fit"
+            className="rounded-md bg-red-600 p-2 m-4"
             onClick={() => navigate("/shop")}
           >
             SHOP NOW
           </button>
         </div>
-        <div className="lg:flex justify-center items-center h-full w-1/2 sm:hidden xs:hidden md:flex xl:flex">
-          <div className="w-1/2 h-5/6 rounded-lg bg-slate-500">
+        <div className="lg:flex justify-center items-center h-full w-1/2 sm:hidden xs:hidden md:hidden xl:flex">
+          <div className="h-4/6 w-5/12 rounded-lg bg-slate-500">
             <img
               className="h-full w-full rotate-12"
               src={katana}
@@ -34,7 +34,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <div className="features h-1/2 bg-slate-700 w-screen grid grid-cols-3 gap-1 p-8 place-items-center">
+      <div className="features h-1/2 bg-slate-700 w-screen xl:grid lg:grid grid-cols-3 gap-1 p-8 place-items-center sm:hidden xs:hidden md:hidden">
         {featuresArray.map((item: any) => {
           return (
             <article key={item._id} className="h-full w-2/4 rounded-md bg-white">
