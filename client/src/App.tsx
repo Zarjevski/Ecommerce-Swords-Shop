@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NotFound from "./components/NotFound";
 import Navbar from "./components/Navbar";
 import PresistLogin from "./features/auth/PresistLogin";
@@ -8,20 +9,10 @@ import About from "./components/About";
 import Cart from "./components/shop/Cart";
 import Login from "./features/auth/Login";
 import RequiredAuth from "./components/RequiredAuth";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "./store";
-import { getProducts } from "./features/shop/shopSlice";
 import Dashboard from "./components/admin/Dashboard";
 import Profile from "./components/Profile";
 
 const App = () => {
-  const dispatch: AppDispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(getProducts());
-  }, []);
-
   return (
     <BrowserRouter>
       <Navbar />
