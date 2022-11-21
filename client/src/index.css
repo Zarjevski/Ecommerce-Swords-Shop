@@ -17,4 +17,6 @@ nav li {
     padding: 12px;
 }
 
-
+.hero {
+    background-image: url('./assets/hero.jpg');
+}

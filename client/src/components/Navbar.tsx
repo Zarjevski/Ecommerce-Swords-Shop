@@ -12,7 +12,7 @@ import { AppDispatch, RootState } from "../store";
 import { openSidebar } from "../features/shop/shopSlice";
 
 const Navbar = () => {
-  const active: object = { color: "red" };
+  const active: object = { color: "#DC2626" };
   const selectLink = () => {
     if(sidebarOpen){
       dispatch(openSidebar())
