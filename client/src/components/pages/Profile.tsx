@@ -1,8 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { RootState, AppDispatch } from "../store";
+import { RootState, AppDispatch } from "../../store";
 import { useDispatch } from "react-redux";
-import { logOut } from "../features/auth/authSlice";
+import { logOut } from "../../features/auth/authSlice";
 
 const Profile = () => {
   const {userName} = useSelector((state:RootState)=> state.auth)

@@ -1,7 +1,7 @@
 import React, { useState, FormEvent } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setAuth } from "./authSlice";
-import { Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { RootState, AppDispatch } from "../../store";
 import {
   UserIcon,
@@ -50,7 +50,7 @@ const Login = () => {
               type="text"
               id="username"
               onChange={(e) => setEmail(e.target.value)}
-              className="w-3/6 h-full text-sm p-2 rounded-r-sm"
+              className="w-3/6 h-full text-sm p-2 rounded-r-sm text-black"
               placeholder="Email Address"
             />
           </div>
@@ -65,18 +65,10 @@ const Login = () => {
               type="password"
               id="password"
               onChange={(e) => setPassword(e.target.value)}
-              className="w-3/6 h-full text-sm p-2 rounded-r-sm"
+              className="w-3/6 h-full text-sm p-2 rounded-r-sm text-black"
               placeholder="Password"
             />
           </div>
-          {errorMsg ? (
-            <p className="w-2/4 h-10 bg-red-300 flex items-center">
-              <ExclamationCircleIcon className="h-5 w-5 m-4" />
-              {errorMsg}
-            </p>
-          ) : (
-            <p></p>
-          )}
           <button
             type="submit"
             className="rounded-md bg-red-600 p-2 m-20 text-md w-3/6"
@@ -84,6 +76,17 @@ const Login = () => {
             login
           </button>
         </form>
+        {errorMsg ? (
+            <p className="w-2/4 h-10 bg-red-300 flex items-center">
+              <ExclamationCircleIcon className="h-5 w-5 m-4" />
+              {errorMsg}
+            </p>
+          ) : (
+            null
+          )}
+        <div>
+          <Link to={'/register'}>dosen't have account?</Link>
+        </div>
       </div>
     </section>
   );

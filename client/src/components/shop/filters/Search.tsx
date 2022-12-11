@@ -14,7 +14,7 @@ const Search = () => {
     }
   },[search])
   return (
-    <form>
+    <form className="w-full flex justify-center caret-red-600 text-black max-h-40 items-center">
       <input
         className="caret-red-500"
         type="text"

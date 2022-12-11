@@ -1,16 +1,17 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import NotFound from "./components/NotFound";
+import NotFound from "./components/pages/NotFound";
 import Navbar from "./components/Navbar";
 import PresistLogin from "./features/auth/PresistLogin";
-import Home from "./components/Home";
+import Home from "./components/pages/Home";
 import Shop from "./components/shop/Shop";
-import About from "./components/About";
+import About from "./components/pages/About";
 import Cart from "./components/shop/Cart";
 import Login from "./features/auth/Login";
 import RequiredAuth from "./components/RequiredAuth";
 import Dashboard from "./components/admin/Dashboard";
-import Profile from "./components/Profile";
+import Profile from "./components/pages/Profile";
+import Register from "./components/pages/Register";
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/shop" element={<Shop />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/cart" element={<Cart />} />
         {/* private routes */}
         <Route element={<PresistLogin />}>

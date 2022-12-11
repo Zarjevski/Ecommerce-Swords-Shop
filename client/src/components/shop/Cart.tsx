@@ -1,11 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
 import CartItem from "./CartItem";
-import { RootState } from "../../store";
-import { useSelector } from "react-redux";
+import { RootState,AppDispatch } from "../../store";
+import { useSelector, useDispatch } from "react-redux";
+import { clearCart, getItems} from "../../features/shop/cartSlice"
 
 const Cart = () => {
-  const { cartItems } = useSelector((state: RootState) => state.cart);
-  const items = cartItems.length;
+  const dispatch: AppDispatch = useDispatch()
+  const { cart } = useSelector((state: RootState) => state.cart);
+  const items = cart.length;
+  useEffect(()=>{
+    dispatch(getItems())
+  },[])
   return (
     <section className="h-screen flex justify-center items-center">
       <div className="h-3/4 w-2/4">
@@ -16,18 +21,21 @@ const Cart = () => {
         <div className="items flex flex-col h-5/6 p-2">
           {!items ? (
             <div className="w-full flex justify-center items-center h-full">
-              <h1 className="text-2xl">your cart is empty</h1>
+              <h1 className="text-2xl">your cart is empty.</h1>
             </div>
           ) : (
-            cartItems.map((item: any) => {
-              return <CartItem key={item._id} {...item} />;
+            cart.map((item: any, i:number) => {
+              return <CartItem key={i} {...item} />;
             })
           )}
         </div>
         <hr />
         <footer className="w-full flex justify-between self-end m-4">
           <h4 className="text-xl">Total:</h4>
-          <button className="rounded-md bg-red-600 p-2 ">checkout</button>
+          <div>
+            <button className="rounded-md bg-pink-500 p-2 ">checkout</button>
+            <button onClick={()=>dispatch(clearCart())} className="rounded-md bg-red-600 p-2 ">clear cart</button>
+          </div>
         </footer>
       </div>
     </section>

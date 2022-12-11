@@ -607,28 +607,16 @@ video {
   margin: 0px;
 }
 
-.m-6 {
-  margin: 1.5rem;
-}
-
-.m-10 {
-  margin: 2.5rem;
-}
-
 .m-5 {
   margin: 1.25rem;
-}
-
-.m-20 {
-  margin: 5rem;
 }
 
 .m-2 {
   margin: 0.5rem;
 }
 
-.m-1 {
-  margin: 0.25rem;
+.m-20 {
+  margin: 5rem;
 }
 
 .flex {
@@ -651,16 +639,16 @@ video {
   height: 100%;
 }
 
-.h-4\/6 {
-  height: 66.666667%;
-}
-
 .h-11 {
   height: 2.75rem;
 }
 
 .h-6 {
   height: 1.5rem;
+}
+
+.h-4\/6 {
+  height: 66.666667%;
 }
 
 .h-5\/6 {
@@ -675,20 +663,8 @@ video {
   height: 33.333333%;
 }
 
-.h-1\/2 {
-  height: 50%;
-}
-
 .h-3\/5 {
   height: 60%;
-}
-
-.h-9 {
-  height: 2.25rem;
-}
-
-.h-8 {
-  height: 2rem;
 }
 
 .h-10 {
@@ -697,6 +673,10 @@ video {
 
 .h-5 {
   height: 1.25rem;
+}
+
+.max-h-40 {
+  max-height: 10rem;
 }
 
 .w-screen {
@@ -709,10 +689,6 @@ video {
 
 .w-1\/2 {
   width: 50%;
-}
-
-.w-5\/12 {
-  width: 41.666667%;
 }
 
 .w-6 {
@@ -739,32 +715,16 @@ video {
   width: 83.333333%;
 }
 
-.w-3\/4 {
-  width: 75%;
-}
-
 .w-3\/6 {
   width: 50%;
 }
 
-.w-9 {
-  width: 2.25rem;
-}
-
-.w-8 {
-  width: 2rem;
-}
-
-.w-10 {
-  width: 2.5rem;
-}
-
-.w-3\/5 {
-  width: 60%;
-}
-
 .w-5 {
   width: 1.25rem;
+}
+
+.w-1\/5 {
+  width: 20%;
 }
 
 .table-auto {
@@ -801,10 +761,6 @@ video {
   justify-content: space-around;
 }
 
-.justify-evenly {
-  justify-content: space-evenly;
-}
-
 .gap-4 {
   gap: 1rem;
 }
@@ -825,14 +781,14 @@ video {
   border-radius: 0.125rem;
 }
 
-.rounded-r-sm {
-  border-top-right-radius: 0.125rem;
-  border-bottom-right-radius: 0.125rem;
-}
-
 .rounded-l-sm {
   border-top-left-radius: 0.125rem;
   border-bottom-left-radius: 0.125rem;
+}
+
+.rounded-r-sm {
+  border-top-right-radius: 0.125rem;
+  border-bottom-right-radius: 0.125rem;
 }
 
 .border-r-2 {
@@ -864,11 +820,6 @@ video {
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
 
-.bg-slate-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
-}
-
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -879,16 +830,18 @@ video {
   background-color: rgb(252 165 165 / var(--tw-bg-opacity));
 }
 
+.bg-red-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+}
+
+.bg-pink-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(236 72 153 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-40 {
   --tw-bg-opacity: 0.4;
-}
-
-.bg-opacity-80 {
-  --tw-bg-opacity: 0.8;
-}
-
-.fill-black {
-  fill: #000;
 }
 
 .p-2 {
@@ -913,21 +866,6 @@ video {
   line-height: 1;
 }
 
-.text-6xl {
-  font-size: 3.75rem;
-  line-height: 1;
-}
-
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -936,6 +874,11 @@ video {
 .text-xl {
   font-size: 1.25rem;
   line-height: 1.75rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
 }
 
 .text-white {
@@ -950,6 +893,10 @@ video {
 
 .caret-red-500 {
   caret-color: #ef4444;
+}
+
+.caret-red-600 {
+  caret-color: #dc2626;
 }
 
 .shadow-lg {
@@ -985,6 +932,7 @@ video {
 body {
   background-color: rgb(29, 29, 29);
   color: aliceblue;
+  overflow-x: hidden;
 }
 
 nav li {
@@ -1018,16 +966,12 @@ nav li {
     width: 100%;
   }
 
-  .xs\:w-2\/4 {
-    width: 50%;
-  }
-
   .xs\:w-3\/4 {
     width: 75%;
   }
 
-  .xs\:grid-cols-1 {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+  .xs\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .xs\:flex-col {
@@ -1078,6 +1022,10 @@ nav li {
     display: none;
   }
 
+  .md\:w-full {
+    width: 100%;
+  }
+
   .md\:w-3\/4 {
     width: 75%;
   }
@@ -1100,8 +1048,16 @@ nav li {
     display: none;
   }
 
+  .lg\:h-3\/6 {
+    height: 50%;
+  }
+
   .lg\:w-1\/2 {
     width: 50%;
+  }
+
+  .lg\:w-3\/12 {
+    width: 25%;
   }
 
   .lg\:w-1\/4 {
@@ -1122,8 +1078,16 @@ nav li {
     display: none;
   }
 
+  .xl\:h-4\/6 {
+    height: 66.666667%;
+  }
+
   .xl\:w-1\/2 {
     width: 50%;
+  }
+
+  .xl\:w-5\/12 {
+    width: 41.666667%;
   }
 
   .xl\:w-1\/4 {
