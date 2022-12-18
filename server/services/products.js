@@ -1,5 +1,14 @@
 import Product from "../models/product.js";
 
+const oneProduct = async(params) => {
+  try {
+    const product = await Product.findById(params.id)
+    return product
+  } catch (error) {
+    throw Error("not found")
+  }
+}
+
 const getProducts = async (search) => {
   const queryObject = {};
   if (search) {
@@ -11,14 +20,12 @@ const getProducts = async (search) => {
 
 const createProduct = async (body) => {
   try {
-    console.log(body)
     const { title, desc, price, category } = body;
     const existing = await Product.findOne({title});
     if (existing) {
       throw new Error("product already exist");
     }
     const newProduct = await Product.create({ title, desc, price, category });
-    console.log(newProduct)
     return newProduct;
   } catch (error) {
     console.log(error);
@@ -27,4 +34,4 @@ const createProduct = async (body) => {
 
 // delete product function is at the controllers
 
-export default { getProducts, createProduct };
+export default { getProducts, createProduct, oneProduct };

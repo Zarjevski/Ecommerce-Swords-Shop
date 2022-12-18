@@ -14,10 +14,11 @@ const Search = () => {
     }
   },[search])
   return (
-    <form className="w-full flex justify-center caret-red-600 text-black max-h-40 items-center">
+    <form className="w-full flex justify-center text-black max-h-60 items-center mt-6">
       <input
-        className="caret-red-500"
+        className="outline-red-500 rounded-sm p-1"
         type="text"
+        placeholder="Search"
         onChange={(e) => {
           setSearch(e.target.value);
         }}

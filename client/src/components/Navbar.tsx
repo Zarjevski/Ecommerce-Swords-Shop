@@ -17,7 +17,7 @@ const Navbar = () => {
     if(sidebarOpen){
       dispatch(openSidebar())
     } else {
-      return
+      return null
     }
   }
   const { sidebarOpen } = useSelector((store: RootState) => store.shop);
@@ -75,6 +75,7 @@ const Navbar = () => {
           <NavLink
             to={"/profile"}
             style={({ isActive }) => (isActive ? active : undefined)}
+            onClick={()=> selectLink()}
           >
             <UserCircleIcon className="h-6 w-6" />
             {/* <UserIcon/> */}
@@ -84,6 +85,7 @@ const Navbar = () => {
           <NavLink
             to={"/cart"}
             style={({ isActive }) => (isActive ? active : undefined)}
+            onClick={()=> selectLink()}
           >
             <ShoppingCartIcon className="h-6 w-6" />
           </NavLink>

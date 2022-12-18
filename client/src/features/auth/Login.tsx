@@ -11,7 +11,7 @@ import {
 import axios from "../../api/axios";
 
 const Login = () => {
-  const { loggedIn } = useSelector((store: RootState) => store.auth);
+  const { loggedIn, role } = useSelector((store: RootState) => store.auth);
   const [errorMsg, setErrorMsg] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -29,7 +29,8 @@ const Login = () => {
     }
   };
   // jsx
-  return loggedIn ? (
+  return loggedIn ?
+  role.includes("Admin") ? (<Navigate to={'/dashboard'}/>) : (
     <Navigate to="/profile" />
   ) : (
     <section className="flex items-center justify-center h-screen flex-col">

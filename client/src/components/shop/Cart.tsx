@@ -1,16 +1,18 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import CartItem from "./CartItem";
-import { RootState,AppDispatch } from "../../store";
+import { RootState, AppDispatch } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
-import { clearCart, getItems} from "../../features/shop/cartSlice"
+import { clearCart, getItems } from "../../features/shop/cartSlice";
 
 const Cart = () => {
-  const dispatch: AppDispatch = useDispatch()
+  const dispatch: AppDispatch = useDispatch();
   const { cart } = useSelector((state: RootState) => state.cart);
   const items = cart.length;
-  useEffect(()=>{
-    dispatch(getItems())
-  },[])
+  useEffect(() => {
+    if (localStorage.getItem("cart")) {
+      dispatch(getItems());
+    }
+  }, []);
   return (
     <section className="h-screen flex justify-center items-center">
       <div className="h-3/4 w-2/4">
@@ -24,7 +26,7 @@ const Cart = () => {
               <h1 className="text-2xl">your cart is empty.</h1>
             </div>
           ) : (
-            cart.map((item: any, i:number) => {
+            cart.map((item: any, i: number) => {
               return <CartItem key={i} {...item} />;
             })
           )}
@@ -34,7 +36,12 @@ const Cart = () => {
           <h4 className="text-xl">Total:</h4>
           <div>
             <button className="rounded-md bg-pink-500 p-2 ">checkout</button>
-            <button onClick={()=>dispatch(clearCart())} className="rounded-md bg-red-600 p-2 ">clear cart</button>
+            <button
+              onClick={() => dispatch(clearCart())}
+              className="rounded-md bg-red-600 p-2 "
+            >
+              clear cart
+            </button>
           </div>
         </footer>
       </div>

@@ -12,6 +12,7 @@ import RequiredAuth from "./components/RequiredAuth";
 import Dashboard from "./components/admin/Dashboard";
 import Profile from "./components/pages/Profile";
 import Register from "./components/pages/Register";
+import ProductPage from "./components/pages/ProductPage";
 
 const App = () => {
   return (
@@ -21,13 +22,14 @@ const App = () => {
         {/* public routes */}
         <Route path="/" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/:id" element={<ProductPage/>}/>
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/cart" element={<Cart />} />
         {/* private routes */}
         <Route element={<PresistLogin />}>
-          <Route element={<RequiredAuth allowedRole={["Customer","Admin"]} />}>
+          <Route element={<RequiredAuth allowedRole={["Customer"]} />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
           <Route element={<RequiredAuth allowedRole={["Admin"]} />}>

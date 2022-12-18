@@ -20,9 +20,7 @@ const cartSlice = createSlice({
     },
     getItems: (state) => {
       const items:any = localStorage.getItem("cart")
-      console.log(items);
       const parsedItems = JSON.parse(items);
-      console.log(parsedItems);
       state.cart = parsedItems  
     },
     clearCart: (state) => {

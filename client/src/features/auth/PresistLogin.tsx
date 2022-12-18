@@ -15,7 +15,7 @@ const PresistLogin = () => {
         await refresh();
         setIsLoading(false)
       } catch (error) {
-        console.error(error);
+        console.info(error);
       }
     };
 

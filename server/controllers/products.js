@@ -11,6 +11,17 @@ const getProducts = async (req, res) => {
   }
 };
 
+const getProduct = async(req,res) => {
+  try {
+    const getOne = await productService.oneProduct(req.params)
+    res.status(200).send(getOne)
+  }
+  catch(error){
+    console.error(error)
+  }
+}
+
+
 const createProduct = async (req, res) => {
   try {
     const created = await productService.createProduct(req.body);
@@ -33,4 +44,4 @@ const deleteProduct = async (req, res) => {
   }
 };
 
-export default { getProducts, createProduct, deleteProduct };
+export default { getProducts, createProduct, deleteProduct, getProduct };

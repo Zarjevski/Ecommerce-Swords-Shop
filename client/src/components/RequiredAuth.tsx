@@ -8,6 +8,8 @@ const RequiredAuth = ({ allowedRole }: { allowedRole: Array<string> }) => {
   const location = useLocation();
   return role.find((role: string) => allowedRole.includes(role)) ? (
     <Outlet />
+  ) : role.includes("Admin") ? (
+    <Navigate to={"/dashboard"} />
   ) : userName == "Guest" ? (
     <Navigate to="/login" state={{ from: location }} replace />
   ) : (

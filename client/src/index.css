@@ -21,3 +21,8 @@ nav li {
 .hero {
     background-image: url('./assets/hero.jpg');
 }
+
+button:hover {
+    background-color: brown;
+    transition: 1000ms;
+}
