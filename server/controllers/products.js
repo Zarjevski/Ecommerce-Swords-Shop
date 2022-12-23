@@ -2,9 +2,8 @@ import Product from "../models/product.js";
 import productService from "../services/products.js";
 
 const getProducts = async (req, res) => {
-  const { search } = req.query;
   try {
-    const products = await productService.getProducts(search);
+    const products = await productService.getProducts(req);
     return res.send(products);
   } catch (error) {
     console.log(error);

@@ -9,10 +9,15 @@ const oneProduct = async(params) => {
   }
 }
 
-const getProducts = async (search) => {
+const getProducts = async (req) => {
+  const {category} = req.params
+  const {search} = req.query
   const queryObject = {};
   if (search) {
     queryObject.title = { $regex: search, $options: "i" };
+  }
+  if (category) {
+    queryObject.category = category;
   }
   let products = await Product.find(queryObject);
   return products;

@@ -10,12 +10,15 @@ export const shopApi = createApi({
     baseQuery: baseQuery,
     endpoints: (builder) => ({
         getProducts: builder.query({
-            query: (queryObject) => `products?${queryObject}`
+            query: () => `products`
         }),
         getProduct: builder.query({
-            query: (id) => `products/${id}`
+            query: (id) => `products/product/${id}`
+        }),
+        getCategory: builder.query({
+            query: (category)=> `products/${category}`
         })
     })
 })
 
-export const {useGetProductsQuery, useGetProductQuery} = shopApi
+export const {useGetProductsQuery, useGetProductQuery, useGetCategoryQuery} = shopApi

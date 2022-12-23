@@ -28,6 +28,8 @@ const Login = () => {
       setTimeout(() => setErrorMsg(""), 2000);
     }
   };
+
+  
   // jsx
   return loggedIn ?
   role.includes("Admin") ? (<Navigate to={'/dashboard'}/>) : (

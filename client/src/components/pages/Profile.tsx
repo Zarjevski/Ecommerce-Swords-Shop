@@ -4,7 +4,7 @@ import { RootState, AppDispatch } from "../../store";
 import { logOut } from "../../features/auth/authSlice";
 
 const Profile = () => {
-  const { userName, role } = useSelector((state: RootState) => state.auth);
+  const { userName } = useSelector((state: RootState) => state.auth);
   const dispatch: AppDispatch = useDispatch();
   return (
     <section className="h-screen m-0 flex justify-center items-center">

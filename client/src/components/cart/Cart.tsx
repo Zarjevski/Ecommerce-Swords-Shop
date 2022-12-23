@@ -2,17 +2,13 @@ import React, { useEffect } from "react";
 import CartItem from "./CartItem";
 import { RootState, AppDispatch } from "../../store";
 import { useSelector, useDispatch } from "react-redux";
-import { clearCart, getItems } from "../../features/shop/cartSlice";
+import { clearCart } from "../../features/shop/cartSlice";
 
 const Cart = () => {
   const dispatch: AppDispatch = useDispatch();
   const { cart } = useSelector((state: RootState) => state.cart);
+  const totalPrice = cart.reduce((acc:number,current:{price:number})=> acc + current.price,0)
   const items = cart.length;
-  useEffect(() => {
-    if (localStorage.getItem("cart")) {
-      dispatch(getItems());
-    }
-  }, []);
   return (
     <section className="h-screen flex justify-center items-center">
       <div className="h-3/4 w-2/4">
@@ -33,7 +29,7 @@ const Cart = () => {
         </div>
         <hr />
         <footer className="w-full flex justify-between self-end m-4">
-          <h4 className="text-xl">Total:</h4>
+          <h4 className="text-xl">Total: ${totalPrice}</h4>
           <div>
             <button className="rounded-md bg-pink-500 p-2 ">checkout</button>
             <button

@@ -1,10 +1,10 @@
 import { createSlice, Reducer } from "@reduxjs/toolkit";
 
 let initialState: {
-  cart: Array<object>;
+  cart: any;
   total: number;
 } = {
-  cart: [],
+  cart: JSON.parse(localStorage.getItem("cart") || "[]") || [],
   total: 0,
 };
 
@@ -13,15 +13,24 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action) => {
-      const { title, price } = action.payload;
-      const newItem = { name: title, price: price, amount: 1 };
-      state.cart.push(newItem);
-      localStorage.setItem("cart", JSON.stringify(state.cart));
-    },
-    getItems: (state) => {
-      const items:any = localStorage.getItem("cart")
-      const parsedItems = JSON.parse(items);
-      state.cart = parsedItems  
+      const { _id, title, price, amount} = action.payload;
+      const newPrice = price * amount;
+      const existing = JSON.parse(localStorage.getItem("cart") || "[]").find(
+        (item: { _id: string }) => item._id === _id
+      );
+      if (!existing) {
+        const newItem = { _id, title, amount, price: newPrice };
+        state.cart.push(newItem);
+        localStorage.setItem("cart", JSON.stringify(state.cart));
+      } else {
+          if (amount == 0) {
+            console.log("need a value");
+          }
+          const index = state.cart.findIndex((item:any) => item._id == existing._id )
+          state.cart[index].amount += amount
+          state.cart[index].price += amount * price
+          localStorage.setItem("cart", JSON.stringify(state.cart));
+      }
     },
     clearCart: (state) => {
       localStorage.removeItem("cart");
@@ -30,5 +39,5 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addItem, getItems, clearCart } = cartSlice.actions;
+export const { addItem, clearCart } = cartSlice.actions;
 export default cartSlice.reducer as Reducer;

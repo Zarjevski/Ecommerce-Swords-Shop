@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Links from "../assets/links.json";
+import Links from "../../assets/links.json";
 import {
   UserCircleIcon,
   ShoppingCartIcon,
@@ -8,11 +8,11 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import { useSelector,useDispatch } from "react-redux";
-import { AppDispatch, RootState } from "../store";
-import { openSidebar } from "../features/shop/shopSlice";
+import { AppDispatch, RootState } from "../../store";
+import { openSidebar } from "../../features/shop/shopSlice";
 
 const Navbar = () => {
-  const active: object = { color: "#DC2626" };
+  const active: object = { color: "#EC4E1F" };
   const selectLink = () => {
     if(sidebarOpen){
       dispatch(openSidebar())

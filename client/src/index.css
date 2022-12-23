@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
 
 * {
     margin: 0;
@@ -8,8 +10,18 @@
     box-sizing: border-box;
 }
 
+h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+}
+
+p {
+    font-family: 'Lora', serif;
+    font-size: 1.2rem;
+}
+
 body {
-    background-color: rgb(29, 29, 29);
+    background-color: #101113;
     color: aliceblue;
     overflow-x: hidden;
 }
@@ -19,10 +31,9 @@ nav li {
 }
 
 .hero {
-    background-image: url('./assets/hero.jpg');
-}
-
-button:hover {
-    background-color: brown;
-    transition: 1000ms;
+    background-color: #101113; 
+    background-image: url('./assets/hero.jpeg');
+    background-size: contain;
+    background-position-x: 150px;
+    background-repeat: no-repeat;
 }
