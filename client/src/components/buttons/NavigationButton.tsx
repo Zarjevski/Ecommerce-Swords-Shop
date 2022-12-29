@@ -2,9 +2,14 @@ import React from "react";
 import tw from "tailwind-styled-components";
 import { useNavigate } from "react-router-dom";
 
-const NavigationButton = ({text,to}) => {
+interface navigationBtn {
+  to: string | any;
+  text: string;
+}
+
+const NavigationButton: React.FunctionComponent<navigationBtn> = (props) => {
   const navigate = useNavigate()
-  return <Button onClick={()=>navigate(to)}>{text}</Button>
+  return <Button onClick={()=>navigate(props.to)}>{props.text}</Button>
 };
 
 export default NavigationButton;
@@ -17,8 +22,7 @@ const Button = tw.button`
  hover:bg-gradient-to-bl 
  focus:ring-4 
  focus:outline-none 
- focus:ring-pink-200 
- dark:focus:ring-pink-800 
+ focus:ring-orange-200 
  font-medium 
  rounded-lg 
  text-sm 
@@ -28,4 +32,10 @@ const Button = tw.button`
  mr-2 
  mb-2 
  mt-4
+ hover:shadow-red-500
+ shadow-sm
+ transition
+ duration-500
+ ease-in-out
+ hover:scale-110
 `;

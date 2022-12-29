@@ -26,10 +26,6 @@ body {
     overflow-x: hidden;
 }
 
-nav li {
-    padding: 12px;
-}
-
 .hero {
     background-color: #101113; 
     background-image: url('./assets/hero.jpeg');

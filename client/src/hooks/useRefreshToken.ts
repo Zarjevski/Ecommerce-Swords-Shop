@@ -10,7 +10,7 @@ const useRefreshToken = () => {
       const response = await axios.get("/auth/refresh");
       dispatch(setAuth({...response.data}));
     } catch (error) {
-      console.error(error);
+      console.info("session expired");
     }
   };
   return refresh

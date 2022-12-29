@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Outlet, Navigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import useRefreshToken from "../../hooks/useRefreshToken";
-import {  useToken } from "./authSlice";
+import {  useToken } from "../../features/auth/authSlice";
 import { useSelector } from "react-redux";
+import Spinner from "../utility/Spinner";
+import Section from "../blocks/Section";
 
 const PresistLogin = () => {
   const token = useSelector(useToken);
@@ -15,14 +17,14 @@ const PresistLogin = () => {
         await refresh();
         setIsLoading(false)
       } catch (error) {
-        console.info(error);
+        console.error(error);
       }
     };
 
     !token ? verifyRefresh() : setIsLoading(false);
   }, []);
 
-  return isLoading ? <h1>loading</h1> : <Outlet />;
+  return isLoading ? <Section><Spinner/></Section> : <Outlet />;
 };
 
 export default PresistLogin;

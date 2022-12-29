@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet, useLocation, Navigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { RootState } from "../store";
+import { RootState } from "../../store";
 
 const RequiredAuth = ({ allowedRole }: { allowedRole: Array<string> }) => {
   const { role, userName } = useSelector((store: RootState) => store.auth);

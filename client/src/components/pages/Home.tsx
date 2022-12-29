@@ -1,13 +1,13 @@
 import React from "react";
-import HomeCatagories from "../HomeCatagories";
-import FullSection from "../blocks/FullSection";
+import  Section  from "../blocks/Section";
+import HomeCatagories from "../utility/HomeCatagories";
 import NavigationButton from "../buttons/NavigationButton";
-import H1 from "../Headings/H1";
+import H1 from "../elements/H1";
 
 const Home = () => {
   return (
     <>
-      <FullSection additional={"hero"}>
+      <Section className="hero">
         <div className="info w-1/2 xs:w-full sm:w-full md:w-full lg:w-1/2 xl:w-1/2 h-full flex flex-col items-center justify-center">
           <H1>ONLY FOR TRUE WARRIORS</H1>
           <p className="text-center">
@@ -17,7 +17,7 @@ const Home = () => {
           </p>
           <NavigationButton text={"SHOP NOW"} to={"/shop"} />
         </div>
-      </FullSection>
+      </Section>
       <HomeCatagories />
     </>
   );

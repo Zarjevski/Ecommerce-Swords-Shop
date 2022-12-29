@@ -1,5 +1,5 @@
 import { createSlice, Reducer } from "@reduxjs/toolkit";
-import { useGetProductsQuery } from "../../features/shop/shopApi";
+import { useGetProductsQuery } from "../../api/apiSlice";
 
 const initialState: {
   products: Array<object>;
@@ -17,7 +17,7 @@ const shopSlice = createSlice({
   name: "shop",
   initialState,
   reducers: {
-    openSidebar: (state) => {
+    toggleSidebar: (state) => {
       state.sidebarOpen = !state.sidebarOpen;
     },
     addNewParam: (state, action) => {
@@ -27,7 +27,7 @@ const shopSlice = createSlice({
 });
 
 export const {
-  openSidebar,
+  toggleSidebar,
   addNewParam,
 } = shopSlice.actions;
 export default shopSlice.reducer as Reducer;

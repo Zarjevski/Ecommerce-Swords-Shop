@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import axios from "axios";
+import Section from "../../blocks/Section";
+import Box from "../../blocks/Box";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
-import { useGetProductsQuery } from "../../../features/shop/shopApi";
+import { useGetProductsQuery } from "../../../api/apiSlice";
 import Spinner from "../../utility/Spinner";
 
 const ProductTable = () => {
@@ -18,14 +20,14 @@ const ProductTable = () => {
   };
   if (isLoading) {
     return (
-      <div className="h-full w-full flex justify-center items-center">
+      <Section>
         <Spinner />
-      </div>
+      </Section>
     );
   }
   return (
-    <div className="h-full w-full flex justify-center items-center">
-      <div className="h-5/6 w-5/6 flex justify-center items-center bg-black rounded-xl">
+    <Section>
+      <Box>
         <table className="h-4/6 w-4/6">
           {/* table head */}
           <thead className="border-b-2 h-4 w-full">
@@ -66,8 +68,8 @@ const ProductTable = () => {
             )}
           </tbody>
         </table>
-      </div>
-    </div>
+      </Box>
+    </Section>
   );
 };
 

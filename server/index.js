@@ -1,14 +1,14 @@
 // imports
 import express from "express";
 import userRoutes from './routes/userRoutes.js'
-import productRoutes from "./routes/products.js";
+import productRoutes from "./routes/productsRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import connectDB from "./config/database.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 dotenv.config();
-// varibales
+// variables
 const app = express();
 const port = 5000 || process.env.PORT;
 // middleware

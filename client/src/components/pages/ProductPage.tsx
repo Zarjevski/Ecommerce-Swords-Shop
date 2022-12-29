@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { useParams, useNavigate,Link } from "react-router-dom";
+import Section from "../blocks/Section";
+import { useParams,Link } from "react-router-dom";
 import { addItem } from "../../features/shop/cartSlice";
 import { AppDispatch } from "../../store";
 import { useDispatch } from "react-redux";
 import { ArrowUturnRightIcon } from "@heroicons/react/24/outline";
-import { useGetProductQuery } from "../../features/shop/shopApi";
+import { useGetProductQuery } from "../../api/apiSlice";
+import Box from "../blocks/Box";
 
 const ProductPage = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -14,8 +16,8 @@ const ProductPage = () => {
   const { id } = useParams();
   const { data } = useGetProductQuery(id);
   return (
-    <section className="h-screen w-full flex items-center justify-center">
-      <div className="bg-black h-5/6 w-4/6 flex rounded-lg">
+    <Section>
+      <Box>
         <div className="w-1/2 p-10 flex flex-col items-center">
           <div className="h-4/6 w-5/6 bg-white justify-center">
             <img src="" alt="" className="h-full w-full" />
@@ -68,8 +70,8 @@ const ProductPage = () => {
             <h1 className="text-2xl">Description:</h1>
           </div>
         </div>
-      </div>
-    </section>
+      </Box>
+    </Section>
   );
 };
 

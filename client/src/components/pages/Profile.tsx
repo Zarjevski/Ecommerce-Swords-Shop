@@ -1,4 +1,6 @@
 import React from "react";
+import Section from "../blocks/Section";
+import Box from "../blocks/Box";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../store";
 import { logOut } from "../../features/auth/authSlice";
@@ -7,8 +9,8 @@ const Profile = () => {
   const { userName } = useSelector((state: RootState) => state.auth);
   const dispatch: AppDispatch = useDispatch();
   return (
-    <section className="h-screen m-0 flex justify-center items-center">
-      <div className="container w-2/6 h-5/6 bg-black rounded-md">
+    <Section>
+      <Box>
         <header className="flex justify-center p-4">
           <h4>hello {userName}</h4>
         </header>
@@ -26,8 +28,8 @@ const Profile = () => {
             logOut
           </button>
         </div>
-      </div>
-    </section>
+      </Box>
+    </Section>
   );
 };
 

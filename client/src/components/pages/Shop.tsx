@@ -2,24 +2,38 @@ import React from "react";
 import Grid from "../shop/Grid";
 import Filters from "../shop/Filters";
 import Spinner from "../utility/Spinner";
-import { useGetProductsQuery } from "../../features/shop/shopApi";
-import { useGetCategoryQuery } from "../../features/shop/shopApi";
+import Section from "../blocks/Section";
+import H1 from "../elements/H1";
+import NavigationButton from "../buttons/NavigationButton";
+import { useGetProductsQuery } from "../../api/apiSlice";
+import { useGetCategoryQuery } from "../../api/apiSlice";
 import { useParams } from "react-router-dom";
 
 const Shop = () => {
-  const {category} = useParams()
-  const { data, isLoading, error } = category? useGetCategoryQuery(category) : useGetProductsQuery({});
+  const { category } = useParams();
+  const { data, isLoading, error} = category
+    ? useGetCategoryQuery(category)
+    : useGetProductsQuery({});
   if (error) {
-    return <div className="h-screen w-screen flex justify-items-center items-center">sorry, no products found..</div>;
+    return (
+      <Section className="flex-col">
+        <H1>Sorry, no products found...</H1>
+        <NavigationButton text={"GO HOME"} to={'/'}/>
+      </Section>
+    );
   }
   if (isLoading) {
-    return <div className="h-screen w-screen flex justify-center items-center"><Spinner/></div>;
+    return (
+      <Section>
+        <Spinner />
+      </Section>
+    );
   }
   return (
-    <section className="w-full h-screen flex sm:justify-center xs:justify-center xs:min-h-fit">
+    <Section>
       <Filters />
-      <Grid data={[...data]}/>
-    </section>
+      <Grid data={[...data]} />
+    </Section>
   );
 };
 

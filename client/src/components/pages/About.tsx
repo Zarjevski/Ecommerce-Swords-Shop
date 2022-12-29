@@ -1,14 +1,18 @@
 import React from "react";
+import Section from "../blocks/Section";
+import Box from "../blocks/Box";
+import Card from "../blocks/Card";
 
 const About = () => {
   return (
-    <section className="h-screen w-full flex items-center justify-center">
-      <div className="bg-black h-5/6 w-4/6 flex">
-        <div className="w-1/2 p-10 flex justify-center">
-          <div className="h-6/6 w-5/6 bg-white">
+    <Section>
+      <Box>
+        <>
+        <Card>
+          <div className="h-full w-full bg-white">
             <img src="" alt="" className="h-full w-full" />
           </div>
-        </div>
+        </Card>
         <div className="w-1/2 p-10 flex flex-col items-center">
           <h1 className="text-4xl">WHO ARE WE?</h1>
           <p className="mt-4 text-lg">
@@ -25,8 +29,9 @@ const About = () => {
             cum? Natus saepe illo commodi maiores iure debitis nisi ab aliquam!
           </p>
         </div>
-      </div>
-    </section>
+        </>
+      </Box>
+    </Section>
   );
 };
 

@@ -4,46 +4,36 @@ import Links from "../../assets/links.json";
 import {
   UserCircleIcon,
   ShoppingCartIcon,
-  Bars3Icon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { useSelector,useDispatch } from "react-redux";
+import Hamburger from "../buttons/Hamburger";
+import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
-import { openSidebar } from "../../features/shop/shopSlice";
+import { toggleSidebar } from "../../features/shop/shopSlice";
+import Nav from "../blocks/Nav";
 
 const Navbar = () => {
   const active: object = { color: "#EC4E1F" };
   const selectLink = () => {
-    if(sidebarOpen){
-      dispatch(openSidebar())
+    if (sidebarOpen) {
+      dispatch(toggleSidebar());
     } else {
-      return null
+      return null;
     }
-  }
+  };
   const { sidebarOpen } = useSelector((store: RootState) => store.shop);
   const dispatch: AppDispatch = useDispatch();
   return (
-    <nav
-      className={
-        sidebarOpen
-          ? "h-screen w-screen bg-black text-white flex flex-col justify-around items-center shadow-lg fixed transition ease-in"
-          : "h-11 w-screen bg-black text-white flex justify-around items-center shadow-lg transition ease-in"
-      }
-    >
+    <Nav>
       {sidebarOpen ? (
         <button
           className="xl:hidden lg:hidden md:block xs:block sm:block"
-          onClick={() => dispatch(openSidebar())}
+          onClick={() => dispatch(toggleSidebar())}
         >
           <XMarkIcon className="w-6 h-6 text-white" />
         </button>
       ) : (
-        <button
-          className="xl:hidden lg:hidden md:block xs:block sm:block"
-          onClick={() => dispatch(openSidebar())}
-        >
-          <Bars3Icon className="w-6 h-6 text-white" />
-        </button>
+        <Hamburger onClick={() => dispatch(toggleSidebar())} />
       )}
       <div className="logo">
         <h1>SHADOW SHOP</h1>
@@ -57,41 +47,35 @@ const Navbar = () => {
       >
         {Links.map((link, i) => {
           return (
-            <li key={i}>
-              <NavLink
-                to={link.path}
-                end
-                style={({ isActive }) => (isActive ? active : undefined)}
-                onClick={()=> selectLink()}
-              >
-                {link.name}
-              </NavLink>
-            </li>
+            <NavLink
+              key={i}
+              to={link.path}
+              end
+              style={({ isActive }) => (isActive ? active : undefined)}
+              onClick={() => selectLink()}
+            >
+              {link.name}
+            </NavLink>
           );
         })}
       </ul>
       <ul className="flex">
-        <li>
-          <NavLink
-            to={"/profile"}
-            style={({ isActive }) => (isActive ? active : undefined)}
-            onClick={()=> selectLink()}
-          >
-            <UserCircleIcon className="h-6 w-6" />
-            {/* <UserIcon/> */}
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={"/cart"}
-            style={({ isActive }) => (isActive ? active : undefined)}
-            onClick={()=> selectLink()}
-          >
-            <ShoppingCartIcon className="h-6 w-6" />
-          </NavLink>
-        </li>
+        <NavLink
+          to={"/profile"}
+          style={({ isActive }) => (isActive ? active : undefined)}
+          onClick={() => selectLink()}
+        >
+          <UserCircleIcon className="h-6 w-6" />
+        </NavLink>
+        <NavLink
+          to={"/cart"}
+          style={({ isActive }) => (isActive ? active : undefined)}
+          onClick={() => selectLink()}
+        >
+          <ShoppingCartIcon className="h-6 w-6" />
+        </NavLink>
       </ul>
-    </nav>
+    </Nav>
   );
 };
 
