@@ -1,0 +1,18 @@
+[
+    {
+        "to": "/dashboard/home",
+        "text": "Home"
+    },
+    {
+        "to":"/dashboard/products",
+        "text":"Products"
+    },
+    {
+        "to":"/dashboard/create",
+        "text":"Create"
+    },
+    {
+       "to":"/dashboard/orders",
+       "text": "Orders"
+    }
+]

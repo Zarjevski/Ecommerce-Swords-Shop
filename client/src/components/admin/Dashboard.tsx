@@ -1,14 +1,15 @@
 import React from "react";
+import Section from "../blocks/Section";
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
 const Dashboard = () => {
   
   return (
-    <section className="w-full h-screen flex">
+    <Section>
       <Sidebar/>
       <Outlet/>
-    </section>
+    </Section>
   );
 };
 

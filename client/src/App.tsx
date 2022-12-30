@@ -1,21 +1,24 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import NotFound from "./components/pages/NotFound";
 import Navbar from "./components/utility/Navbar";
-import PresistLogin from "./components/auth/PresistLogin";
 import Home from "./components/pages/Home";
 import Shop from "./components/pages/Shop";
+import ProductPage from "./components/pages/ProductPage";
 import About from "./components/pages/About";
 import Cart from "./components/cart/Cart";
-import RequiredAuth from "./components/auth/RequiredAuth";
-import Dashboard from "./components/admin/Dashboard";
-import Profile from "./components/pages/Profile";
-import Register from "./components/pages/Register";
-import ProductPage from "./components/pages/ProductPage";
 import Footer from "./components/utility/Footer";
+import NotFound from "./components/pages/NotFound";
+import Register from "./components/pages/Register";
+// auth
+import PresistLogin from "./components/auth/PresistLogin";
+import RequiredAuth from "./components/auth/RequiredAuth";
+import LoginAuth from "./components/auth/LoginAuth";
+import Profile from "./components/pages/Profile";
+// admin
+import Dashboard from "./components/admin/Dashboard";
 import ProductTable from "./components/admin/products/ProductTable";
 import CreateProduct from "./components/admin/products/CreateProduct";
-import LoginAuth from "./components/auth/LoginAuth";
+import HomeDash from "./components/admin/HomeDash";
 
 const App = () => {
   return (
@@ -23,21 +26,23 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route element={<PresistLogin />}>
-        {/* public routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/shop/:category" element={<Shop />} />
-        <Route path="/shop/product/:id" element={<ProductPage />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<LoginAuth />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/cart" element={<Cart/>}/>
-        {/* private routes */}
+          {/* public routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Shop />}>
+            <Route path="/shop/:category" />
+          </Route>
+          <Route path="/shop/product/:id" element={<ProductPage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<LoginAuth />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/cart" element={<Cart />} />
+          {/* private routes */}
           <Route element={<RequiredAuth allowedRole={["Customer"]} />}>
             <Route path="/profile" element={<Profile />} />
           </Route>
           <Route element={<RequiredAuth allowedRole={["Admin"]} />}>
-            <Route path="/dashboard" element={<Dashboard />}>
+            <Route element={<Dashboard />}>
+              <Route path="/dashboard/home" element={<HomeDash />} />
               <Route path="/dashboard/products" element={<ProductTable />} />
               <Route path="/dashboard/create" element={<CreateProduct />} />
             </Route>

@@ -10,7 +10,7 @@ interface Box {
 
 const Box: React.FunctionComponent<Box> = (props) => {
   return (
-    <Div className=''>{props.children}</Div>
+    <Div className={props.className}>{props.children}</Div>
   )
 }
 

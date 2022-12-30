@@ -29,7 +29,17 @@ body {
 .hero {
     background-color: #101113; 
     background-image: url('./assets/hero.jpeg');
-    background-size: contain;
-    background-position-x: 150px;
     background-repeat: no-repeat;
+    background-position-x: -400px;
 }
+
+@media only screen and (min-width: 1200px) {
+    .hero {
+        background-color: #101113; 
+        background-image: url('./assets/hero.jpeg');
+        background-size: contain;
+        background-position-x: 150px;
+        background-repeat: no-repeat;
+    }
+}
+

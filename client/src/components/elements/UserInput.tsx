@@ -2,8 +2,8 @@ import React from "react";
 import tw from "tailwind-styled-components";
 
 interface UserInput {
-  icon: JSX.Element;
-  htmlFor: string;
+  icon?: JSX.Element;
+  htmlFor?: string;
   type: string;
   id: string;
   onChange: (e:any)=>void;
