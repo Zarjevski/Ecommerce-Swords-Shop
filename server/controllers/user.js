@@ -3,4 +3,8 @@ const sendUserData = (req,res) => {
   res.status(200).json({data})
 }
 
-export default sendUserData
+const updateUser = async(req,res) => {
+  res.send("hello")
+}
+
+export default {sendUserData, updateUser}

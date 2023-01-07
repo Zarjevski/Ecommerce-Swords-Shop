@@ -4,25 +4,28 @@ import tw from "tailwind-styled-components"
 
 interface Xbutton {
   onClick: ()=>void;
+  className?:string;
+  $nav?: boolean
 }
 
 const Xbutton: React.FunctionComponent<Xbutton> = (props) => {
   return (
     <Wrapper
-      className="xl:hidden lg:hidden md:block xs:block sm:block"
+      className={props.className}
       onClick={props.onClick}
+      $nav={props.$nav}
     >
       <XMarkIcon className="w-6 h-6 text-white" />
     </Wrapper>
   );
 };
 
-const Wrapper = tw.button`
-  xl:hidden 
+const Wrapper = tw.button<Xbutton>`
+  ${(b) => (b.$nav ? `xl:hidden 
   lg:hidden 
   md:block 
   xs:block 
-  sm:block
+  sm:block` : "block")}
 `
 
 export default Xbutton;

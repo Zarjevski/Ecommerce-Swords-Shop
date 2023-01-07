@@ -10,7 +10,7 @@ const NavButton = () => {
     const { sidebarOpen } = useSelector((store: RootState) => store.shop);
   const dispatch: AppDispatch = useDispatch();
   if (sidebarOpen) {
-    return(<Xbutton onClick={()=>dispatch(toggleSidebar())}/>)
+    return(<Xbutton $nav={true} onClick={()=>dispatch(toggleSidebar())}/>)
   } else {
     return (<Hamburger onClick={()=>dispatch(toggleSidebar())}/>)
   }

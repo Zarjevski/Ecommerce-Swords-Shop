@@ -13,7 +13,7 @@ const Shop = () => {
   const { category } = useParams();
   const { data, isLoading, error} = category
     ? useGetCategoryQuery(category)
-    : useGetProductsQuery({});
+    : useGetProductsQuery({});    
   if (error) {
     return (
       <Section className="flex-col">

@@ -3,10 +3,11 @@ import tw from "tailwind-styled-components";
 
 interface Sidebar {
   children: JSX.Element | JSX.Element[];
+  className?:string
 }
 
 const Sidebar: React.FunctionComponent<Sidebar> = (props) => {
-  return <Wrapper>{props.children}</Wrapper>;
+  return <Wrapper className={props.className}>{props.children}</Wrapper>;
 };
 
 const Wrapper = tw.aside`
@@ -19,7 +20,7 @@ const Wrapper = tw.aside`
   sm:hidden 
   bg-slate-800 
   bg-light-grey/[.2]
-  backdrop-blur-3xl    
+  backdrop-blur-3xl 
 `;
 
 export default Sidebar;

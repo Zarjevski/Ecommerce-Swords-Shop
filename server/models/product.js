@@ -4,7 +4,7 @@ const ProductSchema = new mongoose.Schema({
   title: {
     type: String,
   },
-  desc: {
+  description: {
     type: String,
   },
   rating: {
@@ -15,7 +15,8 @@ const ProductSchema = new mongoose.Schema({
   },
   category: {
     type: String
-  }
+  },
+  img: [String]
 });
 
 export default mongoose.model("Product", ProductSchema);

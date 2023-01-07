@@ -1,15 +1,20 @@
 import React from "react";
 import axios from "axios";
-import Section from "../../blocks/Section";
-import Box from "../../blocks/Box";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import { useGetProductsQuery } from "../../../api/apiSlice";
+import { Table, Thead, Tr, Th, Td } from "../../elements/Table";
+import Section from "../../blocks/Section";
+import Box from "../../blocks/Box";
 import Spinner from "../../utility/Spinner";
+import Button from "../../buttons/Button";
+import H2 from "../../elements/H2";
 
 const ProductTable = () => {
   const { data, isLoading, refetch } = useGetProductsQuery({});
   const { token } = useSelector((state: RootState) => state.auth);
+  const navigate = useNavigate()
   const deleteProduct = async (_id: string) => {
     await axios.delete("http://localhost:80/products", {
       data: { _id },
@@ -27,47 +32,43 @@ const ProductTable = () => {
   }
   return (
     <Section>
-      <Box>
-        <table className="h-4/6 w-4/6">
-          {/* table head */}
-          <thead className="border-b-2 h-4 w-full">
-            <tr>
-              <th className="h-full">product name</th>
-              <th className="h-full">action</th>
-            </tr>
-          </thead>
-          {/* table body */}
+      <Box className="overflow-x-auto flex-col">
+        <H2>Manage Products</H2>
+        <Table>
+          <Thead>
+            <Tr>
+              <Th>Product name</Th>
+              <Th>Category</Th>
+              <Th>Price</Th>
+              <Th>Action</Th>
+            </Tr>
+          </Thead>
           <tbody>
-            {data.map(
-              (product: { _id: string; title: string }, index: number) => {
-                const { _id, title } = product;
-                return (
-                  <tr className="border-b-2 w-full h-2" key={index}>
-                    <td className="w-1/2">{title}</td>
-                    <td className="w-full h-full flex items-center justify-end">
-                      <button
-                        type="button"
-                        className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-                      >
-                        edit
-                      </button>
-                      <button
-                        type="button"
-                        className="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-                        onClick={() => {
-                          deleteProduct(_id);
-                          refetch();
-                        }}
-                      >
-                        delete
-                      </button>
-                    </td>
-                  </tr>
-                );
-              }
-            )}
+            {data.map((product: any, index:number) => {
+              return (
+                <Tr key={index}>
+                  <Td>{product.title}</Td>
+                  <Td>{product.category}</Td>
+                  <Td>${product.price}</Td>
+                  <Td>
+                    <Button
+                      type={"button"}
+                      onClick={() => {deleteProduct(product._id);refetch()}}
+                    >
+                      delete
+                    </Button>
+                    <Button
+                      type={"button"}
+                      onClick={() => navigate(`/dashboard/products/edit/${product._id}`)}
+                    >
+                      edit
+                    </Button>
+                  </Td>
+                </Tr>
+              );
+            })}
           </tbody>
-        </table>
+        </Table>
       </Box>
     </Section>
   );

@@ -9,8 +9,7 @@ const Categories = () => {
         <Link to={'/shop'}>All</Link>
         <Link to={'/shop/swords'}>Swords</Link>
         <Link to={'/shop/knifes'}>Knifes</Link>
-        <Link to={'/shop/masks'}>Masks</Link>
-        <Link to={'/shop/armor'}>Armor</Link>
+        <Link to={'/shop/bows'}>bows</Link>
       </ul>
     </div>
   );

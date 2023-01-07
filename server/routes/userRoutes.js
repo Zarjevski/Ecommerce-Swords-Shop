@@ -1,9 +1,10 @@
 import express from 'express'
 import auth from '../middleware/auth.js'
-import getUserData from '../controllers/user.js'
+import userController from '../controllers/user.js'
 const router = express.Router()
 
 
-router.route('/').get(auth,getUserData)
+router.get("/", auth, userController.sendUserData)
+router.patch("/", auth, userController.updateUser)
 
 export default router

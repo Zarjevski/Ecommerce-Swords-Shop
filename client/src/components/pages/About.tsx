@@ -1,17 +1,18 @@
 import React from "react";
+import samurai from "../../assets/samurai.jpg"
 import Section from "../blocks/Section";
 import Box from "../blocks/Box";
-import Card from "../blocks/Card";
 import H1 from "../elements/H1";
+import Half from "../blocks/Half";
 
 const About = () => {
   return (
     <Section>
       <Box>
-        <Card>
-            <img src="" alt="" className="h-full w-full" />
-        </Card>
-        <div className="w-2/4 p-5">
+        <Half className="xs:hidden sm:hidden md:flex lg:flex xl:flex">
+            <img src={samurai} alt="" className="h-full w-full" />
+        </Half>
+        <Half className="xs:w-full xs:overflow-y-auto">
           <H1>WHO ARE WE?</H1>
           <p className="mt-4 text-lg">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil ad
@@ -26,7 +27,7 @@ const About = () => {
             dignissimos quidem id fugiat error a nihil. Ad accusamus dolores
             cum? Natus saepe illo commodi maiores iure debitis nisi ab aliquam!
           </p>
-          </div>
+        </Half>
       </Box>
     </Section>
   );

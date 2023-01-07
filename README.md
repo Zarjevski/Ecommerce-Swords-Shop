@@ -7,6 +7,7 @@
 * React Router v6
 * Redux Toolkit
 * Tailwind css
+* Styled-Components
 
 ### Back-End:
 * Node.js

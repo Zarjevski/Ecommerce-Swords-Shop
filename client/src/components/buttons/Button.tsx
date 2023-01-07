@@ -5,11 +5,12 @@ interface StyledButton{
     type: any;
     children:string
     onClick?: any
+    className?: string
 }
 
 const Button:React.FunctionComponent<StyledButton> = (props) => {
   return (
-    <StyledButton onClick={props.onClick} type={props.type}>{props.children}</StyledButton>
+    <StyledButton className={props.className} onClick={props.onClick} type={props.type}>{props.children}</StyledButton>
   )
 }
 

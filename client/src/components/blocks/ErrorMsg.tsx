@@ -13,6 +13,10 @@ const ErrorMsg: React.FunctionComponent<ErrorMsg> = (prop) => {
 }
 
 const Error = tw.div`
+    duration-500
+    ease-in-out
+    rounded-md
+    m-5
     w-2/4 
     h-10 
     bg-red-300 

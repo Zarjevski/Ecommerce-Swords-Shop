@@ -18,7 +18,9 @@ import Profile from "./components/pages/Profile";
 import Dashboard from "./components/admin/Dashboard";
 import ProductTable from "./components/admin/products/ProductTable";
 import CreateProduct from "./components/admin/products/CreateProduct";
+import UpdateProduct from "./components/admin/products/UpdateProduct";
 import HomeDash from "./components/admin/HomeDash";
+import Orders from "./components/admin/products/Orders";
 
 const App = () => {
   return (
@@ -44,7 +46,9 @@ const App = () => {
             <Route element={<Dashboard />}>
               <Route path="/dashboard/home" element={<HomeDash />} />
               <Route path="/dashboard/products" element={<ProductTable />} />
+              <Route path="/dashboard/products/edit/:id" element={<UpdateProduct/>}/>
               <Route path="/dashboard/create" element={<CreateProduct />} />
+              <Route path="/dashboard/orders" element={<Orders/>}/>
             </Route>
           </Route>
         </Route>

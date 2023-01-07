@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../store";
 
 interface StyledButton{
-  type: any;
   children:string;
   onClick?: ()=>void;
 }
@@ -13,7 +12,7 @@ interface StyledButton{
 const LogoutButton:React.FunctionComponent<StyledButton> = (props) => {
   const dispatch: AppDispatch = useDispatch()
 return (
-  <StyledButton onClick={()=>dispatch(logOut())} type={props.type}>{props.children}</StyledButton>
+  <StyledButton onClick={()=>dispatch(logOut())} type="button">{props.children}</StyledButton>
 )
 }
 
@@ -34,9 +33,7 @@ text-sm
 px-5 
 py-2.5 
 text-center 
-mr-2 
-mb-2 
-mt-4
+m-2
 hover:shadow-red-500
 shadow-sm
 transition

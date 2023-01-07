@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import useRefreshToken from "../../hooks/useRefreshToken";
+import useCart from "../../hooks/useCart";
 import {  useToken } from "../../features/auth/authSlice";
 import { useSelector } from "react-redux";
 import Spinner from "../utility/Spinner";
@@ -10,7 +11,7 @@ const PresistLogin = () => {
   const token = useSelector(useToken);
   const [isLoading, setIsLoading] = useState(true);
   const refresh = useRefreshToken();
-
+  const cartItems = useCart()
   useEffect(() => {
     const verifyRefresh = async () => {
       try {
@@ -23,6 +24,10 @@ const PresistLogin = () => {
 
     !token ? verifyRefresh() : setIsLoading(false);
   }, []);
+
+  useEffect(()=>{
+    cartItems()
+  },[])
 
   return isLoading ? <Section><Spinner/></Section> : <Outlet />;
 };

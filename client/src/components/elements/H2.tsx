@@ -16,5 +16,5 @@ export default H2
 
 const BigTitle = tw.h1`
     text-2xl
-    m-4
+    p-5
 `

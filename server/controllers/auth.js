@@ -31,7 +31,6 @@ const login = async (req, res) => {
     res.status(200).json({ accessToken, userRole, username });
   } catch (error) {
     res.status(401).json({ error });
-    console.log(error);
   }
 };
 
@@ -52,7 +51,6 @@ const logout = (req, res) => {
   }
   res.clearCookie("jwt", {
     httpOnly: true,
-    // sameSite: "None",
   });
   res.json({ msg: "cookie cleared" });
 };

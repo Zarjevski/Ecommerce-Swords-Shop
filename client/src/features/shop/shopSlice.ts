@@ -1,14 +1,11 @@
 import { createSlice, Reducer } from "@reduxjs/toolkit";
-import { useGetProductsQuery } from "../../api/apiSlice";
 
 const initialState: {
-  products: Array<object>;
   queryObject: object;
   sidebarOpen: boolean;
   isLoading: boolean;
 } = {
   queryObject: {},
-  products: [],
   sidebarOpen: false,
   isLoading: true,
 };

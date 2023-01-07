@@ -34,20 +34,24 @@ const Login = () => {
       {errorMsg ? <ErrorMsg>{errorMsg}</ErrorMsg> : <></>}
       <Form onSubmit={handleSubmit} heading={"LOGIN"}>
         <UserInput
+          label="yes"
           onChange={(e: any) => setEmail(e.target.value)}
           htmlFor="username"
           id="username"
           type="text"
           placeholder="email"
-          icon={<UserIcon className="h-6 w-6 text-black bg-white" />}
+          autocomplete="username"
+          icon={<UserIcon className="h-6 w-6 text-white" />}
         />
         <UserInput
+          label="yes"
           onChange={(e: any) => setPassword(e.target.value)}
           htmlFor="password"
           id="password"
           type="password"
           placeholder="password"
-          icon={<KeyIcon className="h-6 w-6 text-black bg-white" />}
+          autocomplete="current-password"
+          icon={<KeyIcon className="h-6 w-6 text-white " />}
         />
         <Button type={"submit"}>LOGIN</Button>
         <CustomLink to={"/register"}>dosen't have account?</CustomLink>

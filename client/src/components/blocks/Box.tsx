@@ -19,10 +19,8 @@ export default Box
 const Div = tw.div`
   h-5/6
   w-4/6 
-  bg-black 
   flex 
   items-center 
-  justify-center
   rounded-xl
   bg-light-grey/[.1]
   backdrop-blur-3xl

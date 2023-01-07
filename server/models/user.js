@@ -25,21 +25,9 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
-  billing: {
-    required: false,
-    address: {
-      type: String,
-    },
-    zipcode: {
-      type: Number,
-    },
-    country: {
-      type: String,
-    },
-    phoneNumber: {
-      type: Number,
-    },
-  },
+  cart: [Object],
+  orders: [Object],
+  billing: [Object]
 });
 
 export default mongoose.model("User", UserSchema);

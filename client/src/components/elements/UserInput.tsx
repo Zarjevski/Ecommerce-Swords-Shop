@@ -6,20 +6,30 @@ interface UserInput {
   htmlFor?: string;
   type: string;
   id: string;
-  onChange: (e:any)=>void;
+  onChange?: (e: any) => void;
   placeholder: string;
+  name?: string;
+  autocomplete?: string
+  label?: string
 }
 
 const UserInput: React.FunctionComponent<UserInput> = (props) => {
   return (
-    <Wrapper>
-      <Label htmlFor={props.htmlFor}>{props.icon}</Label>
-      <Input type={props.type} id={props.id} placeholder={props.placeholder} onChange={props.onChange}/>
+    <Wrapper label={props.label}>
+     { props.label ? <Label htmlFor={props.htmlFor}>{props.icon}</Label> : <></> }
+      <Input
+        name={props.name}
+        type={props.type}
+        id={props.id}
+        placeholder={props.placeholder}
+        onChange={props.onChange}
+        autoComplete={props.autocomplete}
+      />
     </Wrapper>
   );
 };
 
-const Wrapper = tw.div`
+const Wrapper = tw.div<any>`
   w-full
   flex 
   justify-center 
@@ -28,8 +38,9 @@ const Wrapper = tw.div`
 const Label = tw.label`
   p-2 
   h-full 
-  bg-white 
   rounded-l-sm
+  bg-light-grey/[.1]
+  backdrop-blur-xl
 `;
 
 const Input = tw.input`
@@ -38,7 +49,12 @@ const Input = tw.input`
   text-sm 
   p-2 
   rounded-r-sm 
-  text-black
+  bg-light-grey/[.05]
+  backdrop-blur-xl
+  focus:border-sky-500
+  focus:outline-none
+  focus:ring-sky-500
+  border
 `;
 
 export default UserInput;

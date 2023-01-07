@@ -46,6 +46,7 @@ const Wrapper = tw.div`
   flex 
   justify-center
   items-center
+  p-1
 `;
 
 export default CartIcon;

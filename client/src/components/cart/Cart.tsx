@@ -14,7 +14,7 @@ const Cart = () => {
   const items = cart.length;
   return (
     <Section className="justify-evenly">
-      <Box className="flex-col h-3/4">
+      <Box className="flex-col h-3/4 ">
       <H1>CART</H1>
         {!items ? (
           <H2>Your Cart Is Empty</H2>

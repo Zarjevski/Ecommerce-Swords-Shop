@@ -10,16 +10,14 @@ const getProducts = async (req, res) => {
   }
 };
 
-const getProduct = async(req,res) => {
+const getOneProduct = async (req, res) => {
   try {
-    const getOne = await productService.oneProduct(req.params)
-    res.status(200).send(getOne)
+    const getOne = await productService.oneProduct(req.params);
+    res.status(200).send(getOne);
+  } catch (error) {
+    console.error(error);
   }
-  catch(error){
-    console.error(error)
-  }
-}
-
+};
 
 const createProduct = async (req, res) => {
   try {
@@ -36,11 +34,26 @@ const deleteProduct = async (req, res) => {
   const { _id } = req.body;
   try {
     const deleteOne = await Product.deleteOne({ _id });
-    console.log(deleteOne);
-    res.status(200).json({ msg: `product wih id:${_id} was deleted` });
+    res.status(200).json({ msg: deleteOne });
   } catch (error) {
     console.log(error);
   }
 };
 
-export default { getProducts, createProduct, deleteProduct, getProduct };
+const updateProduct = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const update = await productService.update(id, req.body);
+    res.status(200).json({ status: "success", msg: { update } });
+  } catch (error) {
+    res.status(500).json(error);
+  }
+};
+
+export default {
+  getProducts,
+  createProduct,
+  deleteProduct,
+  getOneProduct,
+  updateProduct,
+};
